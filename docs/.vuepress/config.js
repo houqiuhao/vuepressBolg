@@ -8,6 +8,18 @@ module.exports = {
           { text: 'css', link: '/css/' },
           { text: 'js', link: '/js/' },
           { text: 'vue', link: '/vue/' },
+        ],
+        sidebar: [
+            {
+                "/html/" : [
+                    {
+                        title: "html",
+                        collapsable: false,
+                        sidbarDepth: 2,
+                        children:['index']
+                    },
+                ],
+            }
         ]
       }
 }
