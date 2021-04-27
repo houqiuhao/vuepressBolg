@@ -8,6 +8,7 @@ module.exports = {
           { text: 'css', link: '/css/' },
           { text: 'js', link: '/js/' },
           { text: 'vue', link: '/vue/' },
+          { text: 'webpack', link: '/webpack/'},
         ],
         sidebar: [
             {
