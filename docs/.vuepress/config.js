@@ -9,6 +9,7 @@ module.exports = {
           { text: 'js', link: '/js/' },
           { text: 'vue', link: '/vue/' },
           { text: 'MarkDown', link: '/MarkDown/'},
+          { text: 'useTool', link: '/useTool/devtool/'}
         ],
         sidebar: [
             {
