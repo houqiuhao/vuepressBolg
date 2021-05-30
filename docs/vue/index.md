@@ -19,3 +19,4 @@
  5、v-once:只使用一次的数据，后续不会再变化，不想让变化也可以使用Object.freeze()
  6、事件修饰符：.stop  .prevent .self .capture .once .passive
  7、插槽：给个入口，可以插入html模板或者组件之类
+ 8、vue中有filter，可以过滤，类似methods
