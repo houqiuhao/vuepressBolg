@@ -1,11 +1,35 @@
 # javascript 基础教学
 
-## 
+## 数据类型
 1、js保留字：arguments、break、case、catch、class、const、continue、debugger、default、delete、do、else、enum、eval、export、extends、false、finally、for、function、if、implements、import、in、instanceof、interface、let、new、null、package、private、protected、public、return、static、super、switch、this、throw、true、try、typeof、var、void、while、with、yield。
 2、lable: //标签 可以让代码跳转到此处
-## js特殊使用方式
 
-### 非数组转化为数组
+## 运算符
+1、 减法会先转化为number，加法会根据情况
+2、比较运算符，非字符串情况下，原始类型会转化为数值再进行比较，非原始类型会调用 valueOf().toString();
+3、|  二进制或，可快速转化32位
+4、^  二进制异或，可以快速交换两数字
+5、void  可以在form表单中使用，方式post数据跳转，void返回undefined 
+
+## 语法专题
+### 数据转换
+1、number较为严格，只要有不能转的就会转为NaN，parseInt会把能转的转了
+2、String 会将对象转化成[object,object]，将数组转化成字符串形式
+```js
+String({a: 1}) // "[object Object]"
+String([1, 2, 3]) // "1,2,3"
+```
+3、Boolean, 只有null，undefined，0，NaN，''为false，其他都是true
+
+## 标准库
+
+
+## 
+
+
+
+## js特殊使用方式
+1、非数组转化为数组
 ```js 如转化arguments
 var args = Array.prototype.slice.call(arguments);
 
