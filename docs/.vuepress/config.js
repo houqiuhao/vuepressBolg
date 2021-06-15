@@ -11,17 +11,23 @@ module.exports = {
           { text: 'MarkDown', link: '/MarkDown/'},
           { text: 'useTool', link: '/useTool/devtool/'}
         ],
-        sidebar: [
-            {
-                "/html/" : [
-                    {
-                        title: "html",
-                        collapsable: false,
-                        sidbarDepth: 2,
-                        children:['index']
-                    },
-                ],
-            }
-        ]
+        sidebar: {
+            "/html/": [
+                {
+                    title: "html",
+                    collapsable: false,
+                    sidbarDepth: 2,
+                    children:['target']
+                },
+            ],
+            "/js/": [
+                {
+                    title: "ES5",
+                    collapsable: false,
+                    sidbarDepth: 2,
+                    children:['ES5','jsDaily']
+                }
+            ]
+        }
       }
 }
