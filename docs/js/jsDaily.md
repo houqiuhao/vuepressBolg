@@ -40,3 +40,13 @@
  }
  ```
  2、JSON.parse  JSON.stringify
+
+
+ ## 浏览器中的缓存机制区别
+ 一般使用三种，cookie、localstorage、sessionstorage
+
+ cookie用来记录用户的一些信息，会在数据请求的时候携带
+
+ local storage会保存在浏览器中，除非手动删除或者覆盖，否则一直存在
+
+ session storage保存在浏览器中，刷新浏览器或关闭浏览器会删除
