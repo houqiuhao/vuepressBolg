@@ -27,6 +27,10 @@ String([1, 2, 3]) // "1,2,3"
 1、array.toString()可以将数组扁平化
 2、array的sort是根据字典序排序，会将数字先转化为字符串再进行排序
 
+### Object
+1、原生的js对象，查看时会展示"function valueOf() { [native code] }"
+    查看方法：Object.valueOf().toString()
+
 ## 面向对象
 
 
