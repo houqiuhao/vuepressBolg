@@ -52,6 +52,75 @@ Element.style返回的只是行内样式，并不是该元素的全部样式，�
 
 2、addEventListener方法可以为针对当前对象的同一个事件，添加多个不同的监听函数。这些函数按照添加顺序触发，即先添加先触发。如果为同一个事件多次添加同一个监听函数，该函数只会执行一次，多余的添加将自动被去除（不必使用removeEventListener方法手动去除）。
 
+3、派发事件：dispatchEvent（）
+
+### Event对象
+  Event构造函数接受两个参数，一个是type，即事件类型，一个是options，表示事件配置  
+  1. options有两个属性： bubbles：表示事件是否冒泡，默认false， cancelable：表示事件是否可取消，即能否用Event.preventDefault()取消事件  
+
+
+### 属性
+  1、Event.bubbles，Event.eventPhase（返回一个整数常量，表示事件目前所处的阶段）   
+    0，事件目前没有发生。  
+    1，事件目前处于捕获阶段，即处于从祖先节点向目标节点的传播过程中。  
+    2，事件到达目标节点，即Event.target属性指向的那个节点。  
+    3，事件处于冒泡阶段，即处于从目标节点向祖先节点的反向传播过程中。  
+  2、Event.cancelable，Event.cancelBubble，event.defaultPrevented  
+  3、Event.currentTarget，Event.target  
+  4、Event.type  
+  5、Event.timeStamp属性返回一个毫秒时间戳，表示事件发生的时间  
+  6、Event.isTrusted  
+  7、Event.detail 
+### 实例方法
+Event.preventDefault方法取消浏览器对当前事件的默认行为  
+:::tip
+注意，该方法只是取消事件对当前元素的默认影响，不会阻止事件的传播。如果要阻止传播，可以使用stopPropagation()或stopImmediatePropagation()方法。
+:::
+Event.composedPath()返回一个数组，成员是事件的最底层节点和依次冒泡经过的所有上层节点。
+
+
+:::tip
+lodash函数库提供了现成的throttle函数，可以直接使用。
+:::
+
+
+## 浏览器
+
+### script 元素
+
+1、defer属性：作用是延迟脚本的执行，等到 DOM 加载生成后，再执行脚本   
+2、async属性的作用是，使用另一个进程下载脚本，下载时不会阻塞渲染。    
+3、手动插入脚本时，可以使用async属性为false，防止顺序错误（先下载完的先处理导致）  
+
+
+染引擎处理网页，通常分成四个阶段。
+
+解析代码：HTML 代码解析为 DOM，CSS 代码解析为 CSSOM（CSS Object Model）。
+对象合成：将 DOM 和 CSSOM 合成一棵渲染树（render tree）。
+布局：计算出渲染树的布局（layout）。
+绘制：将渲染树绘制到屏幕。
+
+### 重流和重绘
+页面生成以后，脚本操作和样式表操作，都会触发“重流”（reflow）和“重绘”（repaint）。用户的互动也会触发重流和重绘，比如设置了鼠标悬停（a:hover）效果、页面滚动、在输入框中输入文本、改变窗口大小等等。  
+1、重流必然导致重绘，重绘不一定需要重流。比如改变元素颜色，只会导致重绘，而不会导致重流；改变元素的布局，则会导致重绘和重流。
+::: tip
+使用window.requestAnimationFrame()，因为它可以把代码推迟到下一次重绘之前执行，而不是立即要求页面重绘。
+:::
+
+
+## cookie和同源限制
+
+
+2、跨域方式   
+1. JSONP：使用一个script脚本请求，在url中加入？callback=【回调函数】，服务器端做拼接，就可以在回调函数中拿到数据了
+2. websocket：通信协议，其中有字段origin，服务端可以根据origin处理要不要返回给他数据
+3. CORS
+
+
+
+
+
+
 
 
 ## js特殊使用方式
