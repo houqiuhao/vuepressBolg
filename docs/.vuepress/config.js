@@ -26,6 +26,12 @@ module.exports = {
                     collapsable: false,
                     sidbarDepth: 2,
                     children:['ES5','jsDaily']
+                },
+                {
+                    title: "ES6",
+                    collapsable: false,
+                    sidbarDepth: 2,
+                    children:['ES6']
                 }
             ]
         }
