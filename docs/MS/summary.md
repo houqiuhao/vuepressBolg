@@ -76,3 +76,136 @@
     圣杯布局
     双飞翼布局
     =》左右固定，中间自适应
+
+
+### js
+
+体系框架：
+一、模块一 ： js底层三座大山
+1、堆栈内存及闭包作用域
+1. js中的8种数据类型及区别
+2. js堆栈内存的运行机制
+3. 变量提升机制
+4. 作用域和作用域链
+5. 闭包的两大作用：保护/保存
+6. JS编译机制：VO/AO/GO
+7. js高级编程技巧：惰性函数、柯里化函数、高阶函数
+
+2、面向对象和this处理
+1. 单例设计模式
+2. 类和实例
+3. 原型和原型链
+4. new 运算符的实现机制
+5. call/apply/bind
+6. constructor 构造函数模式
+7. this的五种情况综合梳理
+8. js 四大数据类型检测方案
+9. js四大继承方案（深浅拷贝）
+
+3、DOM/BOM及事件处理机制
+1. DOM/BOM的核心操作
+2. 事件对象
+3. 拖拽和拖拽插件封装
+4. 发布订阅设计模式
+5. JQ源码
+6. 事件传播机制和事件代理
+7. DOM2级事件核心运行机制
+8. 移动端事件touch
+9. 浏览器底层渲染机制和DOM回流重绘
+10. dialog模态框组件封装
+
+二、ES6/7和AJAX前后端交互
+1、ES6/ES7核心知识
+1. let/const及var区别
+2. 箭头函数ArrowFunction
+3. 解构赋值和拓展运算符
+4. Set/Map数据解构
+5. promise
+6. async/await 及实现原理
+7. Generator生成器函数
+8. Promise A+规范 （手写promise源码）
+9. js底层：单线程和同步异步
+10. JS底层：微任务宏任务和事件循环机制
+11. Interator迭代器和for of循环
+
+2、AJAX/HTTP前后端数据交互
+1. AJAX核心四步
+2. GET/POST
+3. TCP三次握手四次挥手
+4. axios
+5. fetch
+6. 跨域
+7. http状态码
+8. 性能优化
+
+
+
+#### 浅克隆深克隆
+1、JSON.parse(JSON.stringify(obj))  
+    弊端：
+
+2、遍历
+:::js
+    function deepClone(obj) {
+        if(obj === null) return null
+        if(typeof obj !== 'object') return obj;
+        if (obj instanceof RegExp) {
+            return new RegExp(obj)
+        }
+        if( obj instanceof Date){
+            return new Date(obj)
+        }
+        //不直接创建空对象的原因：克隆的结果保持和传入的值保持同一所属类
+        let obj2 = new obj.constructor
+        for (let key in obj) {
+            if(obj.hasOwnProperty(key)){
+                obj2[key] = deepClone(obj[key])
+            }
+        }
+        return obj2
+    }
+:::
+
+
+4、问题：手写一个new的原理
+
+:::tip
+js 运算符的优先级
+:::
+
+:::js
+//堆与栈
+    function foo() {
+        getName = function() {
+            console.log(1)
+        }
+        return this
+    }
+    foo.getName = function () {
+        console.log(2)
+    }
+    foo.prototype.getName = function(){
+        console.log(3)
+    }
+    var getName(){
+        console.log(4)
+    }
+    function getName() {
+        console.log(5)
+    }
+    foo.getName()
+    getName()
+    foo().getName()
+    getName()
+    new foo.getName()
+    new foo().getName()
+    new new foo().getName()
+:::
+
+5、宏任务和微任务   
+浏览器是多线程，js是单线程=》浏览器只给了其一个线程来渲染
+event queue 事件队列
+先微任务队列：pormise  async await
+后宏任务队列：定时器  事件绑定 XHR
+
+::: 
