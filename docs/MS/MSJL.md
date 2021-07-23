@@ -97,3 +97,6 @@ transform: scale(1,0.5)
     border-radius: 100% 
 }
 ```
+
+## 清除浮动的方式及原理
+主要引出BFC
