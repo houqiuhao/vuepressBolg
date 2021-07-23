@@ -52,7 +52,7 @@
                 justify-content： center
                 align-items: center
     3、JavaScript:获取当前屏幕的宽高
-::: js
+```js
     let HTML = document.documentElement,
         winW=HTML.clientWidth,
         winH=HTML.clientHeight,
@@ -62,7 +62,7 @@
     body.style.position="absolute"
     body.style.left=(winW-bowW) / 2 + 'px'
     body.style.top=(winH-boxH) / 2 + 'px'
-:::
+```
     4、display：table-cell  //盒子变成inline 要求父级有固定宽高
         vertical-align：middle
         text-align： center
@@ -145,7 +145,7 @@
     弊端：
 
 2、遍历
-:::js
+```js
     function deepClone(obj) {
         if(obj === null) return null
         if(typeof obj !== 'object') return obj;
@@ -164,8 +164,7 @@
         }
         return obj2
     }
-:::
-
+```
 
 4、问题：手写一个new的原理
 
@@ -173,7 +172,7 @@
 js 运算符的优先级
 :::
 
-:::js
+```js
 //堆与栈
     function foo() {
         getName = function() {
@@ -200,7 +199,7 @@ js 运算符的优先级
     new foo.getName()
     new foo().getName()
     new new foo().getName()
-:::
+```
 
 5、宏任务和微任务   
 浏览器是多线程，js是单线程=》浏览器只给了其一个线程来渲染
@@ -208,4 +207,3 @@ event queue 事件队列
 先微任务队列：pormise  async await
 后宏任务队列：定时器  事件绑定 XHR
 
-::: 

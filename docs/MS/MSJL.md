@@ -13,7 +13,7 @@
 1、块级元素有什么，行内元素有什么
 2、H5标签都有啥
 3、单选框如何在点击字的时候也能选
-4、如何引入js和css
+4、如何引入js和css(除了import？)
 
 css：
 1、CSS如何实现圆角，如果border-redius设置为100%是怎样
@@ -29,12 +29,13 @@ js：
 3、js中eval的作用
 4、保存用户登录状态的方式
 5、sessionstorey和localstorey区别
-6、
+6、如何获取当前页面url：window.local.href
 
 vue：
 1、生命周期，created和mounted区别
 2、怎么监听属性、watch和compute区别，如何监听对象的属性
 3、vue的常用指令，v-html和v-txt区别，v-show和v-if区别
+4、计算属性和监听属性的区别
 
 
 
@@ -70,3 +71,29 @@ vue：
 23、如何在js中深冻结对象
 24、iterator是什么有什么作用
 25、Generator函数是什么，有什么用
+
+
+
+
+
+
+
+## 题记
+
+**画一条0.5px的边**  
+考察的是CSS3的transform
+```js
+transform: scale(1,0.5)
+```
+
+## css画一个三角形
+```css
+.divA{
+    width: 0;
+    height: 0;
+    border: solid 3rem;
+    border-color: transparent transparent white transparent;
+    <--扇形-->
+    border-radius: 100% 
+}
+```

@@ -50,3 +50,23 @@
  local storage会保存在浏览器中，除非手动删除或者覆盖，否则一直存在
 
  session storage保存在浏览器中，刷新浏览器或关闭浏览器会删除
+
+
+### 覆写console的理解：
+覆写方法如下：
+```js
+//将console.log写为自执行函数，并将原生的console.log当作参数传入
+window.console.log = (function (oriLog) {
+    //返回一个函数，此时console.log为堆中的一个函数，当调用时，会执行此函数内容，即oriLog.call（）
+        return function () {
+            try {
+                //将this指向console，即会执行console下的oriLog，即原生console.log指令
+                oriLog.call(console,...arguments);
+                if (remoteable) {
+                    postWebLog(...arguments);
+                }
+            }
+            catch (err){}
+        }
+    })(console.log)  //
+```
