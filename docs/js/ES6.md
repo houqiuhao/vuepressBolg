@@ -90,8 +90,144 @@ Math 对象的扩展
 BigInt 数据类型
 
 
+## 七、函数的扩展
+函数参数的默认值
+rest 参数
+严格模式
+name 属性
+箭头函数
+尾调用优化
+函数参数的尾逗号
+Function.prototype.toString()
+catch 命令的参数省略
+
 :::tip
 尾递归和尾调用可以优化函数运行
 函数调用会在内存形成一个调用记录，又称调用帧（call frame），保存调用位置和内部变量等信息，多个函数串联调用就会形成调用栈，尾调用可以释放外层函数的调用帧
 递归容易发送栈溢出的问题，尾递归只会存在一个调用帧，不会发生栈溢出
 :::
+
+
+## 八、数组的扩展
+扩展运算符
+Array.from()
+Array.of()
+数组实例的 copyWithin()
+数组实例的 find() 和 findIndex()
+数组实例的 fill()
+数组实例的 entries()，keys() 和 values()
+数组实例的 includes()
+数组实例的 flat()，flatMap()
+数组的空位
+Array.prototype.sort() 的排序稳定性
+
+## 九、对象的扩展
+属性的简洁表示法
+属性名表达式
+方法的 name 属性
+属性的可枚举性和遍历
+super 关键字    //super，指向当前对象的原型对象。
+对象的扩展运算符
+
+## 十、对象的新增方法
+Object.is()
+Object.assign()
+Object.getOwnPropertyDescriptors()
+__proto__属性，Object.setPrototypeOf()，Object.getPrototypeOf()
+Object.keys()，Object.values()，Object.entries()
+Object.fromEntries()
+
+## 十一、运算符的扩展
+指数运算符
+链判断运算符
+Null 判断运算符
+逻辑赋值运算符
+
+## 十二、Symbol
+概述
+Symbol.prototype.description
+作为属性名的 Symbol
+实例：消除魔术字符串
+属性名的遍历
+Symbol.for()，Symbol.keyFor()
+实例：模块的 Singleton 模式
+内置的 Symbol 值
+
+## 十三、Set 和 Map 数据结构
+Set
+WeakSet
+Map
+WeakMap
+WeakRef
+FinalizationRegistry
+
+## 十四、Proxy
+概述
+Proxy 实例的方法
+Proxy.revocable()
+this 问题
+实例：Web 服务的客户端
+
+## 十五、Reflect
+概述
+静态方法
+实例：使用 Proxy 实现观察者模式
+
+## 十六、Promise 对象
+Promise 的含义
+基本用法
+Promise.prototype.then()
+Promise.prototype.catch()
+Promise.prototype.finally()
+Promise.all()   //多个promise实例包装为一个，状态都为fulfilled时候，总的才会是fulfilled，有一个rejected就会rejected
+Promise.race()  
+Promise.allSettled()   //包装， 不管什么状态，全部返回后才处理总的
+Promise.any()
+Promise.resolve()
+Promise.reject()
+应用
+Promise.try()
+
+1、promise三种状态：pending、fulfilled（resolved）、rejected
+2、promise会吃掉报错，也就是说promise报错也不会影响后面的程序运行
+3、promise处理方式有三种，.then()/.catch()/.finally()
+4、Promise.race()方法同样是将多个 Promise 实例，包装成一个新的 Promise 实例。只要其中有一个状态变化了总的状态就跟着变了，可以用来选择最快返回的那个
+
+## 十七、Iterator 和 for...of 循环
+Iterator（遍历器）的概念
+默认 Iterator 接口
+调用 Iterator 接口的场合
+字符串的 Iterator 接口
+Iterator 接口与 Generator 函数
+遍历器对象的 return()，throw()
+for...of 循环
+
+1、调用遍历器的地方：
+for...of
+Array.from()
+Map(), Set(), WeakMap(), WeakSet()（比如new Map([['a',1],['b',2]])）
+Promise.all()
+Promise.race()
+
+2、iterator使用方法：
+```js
+NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
+// 或者
+NodeList.prototype[Symbol.iterator] = [][Symbol.iterator];
+```
+3、数组遍历的时候可以用for循环、for in（遍历的为键值。且为字符串）、forEach（不能跳出循环）、for of（较好）
+
+## 十八、Generator 函数的语法
+简介
+next 方法的参数
+for...of 循环
+Generator.prototype.throw()
+Generator.prototype.return()
+next()、throw()、return() 的共同点
+yield* 表达式
+作为对象属性的 Generator 函数
+Generator 函数的this
+含义
+应用
+
+1、Generator返回遍历器对象，有两个特点，一是function函数与名间有个*，二是内部使用yield表达式，定义不同内部状态
