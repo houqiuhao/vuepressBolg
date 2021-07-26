@@ -231,23 +231,23 @@ Generator 函数的this
 含义
 应用
 
-1、Generator返回遍历器对象，有两个特点，一是function函数与名间有个*，二是内部使用yield表达式，定义不同内部状态
-2、yield表达式如果用在另一个表达式之中，必须放在圆括号里面；yield表达式用作函数参数或放在赋值表达式的右边，可以不加括号
-3、可以将Generator函数赋值给变量的Symbol.iterator属性，使变量可以遍历
-4、yield表达式默认返回值为undefined，在调用next()的时候可以传参，此时参数就会被认为是之前一步的返回值，__首次next传参无效__
-5、return方法会执行finally中的代码，再返回return中的值，结束
-6、yield* 可以在generator中返回其他generator代码，而不用手动遍历
-7、generator应用：
-1. 异步的同步化表达
-2. 控制流管理： 
-    多步操作可使用：回调、promise、generator（此时只能全是同步）
+1. Generator返回遍历器对象，有两个特点，一是function函数与名间有个*，二是内部使用yield表达式，定义不同内部状态
+2. yield表达式如果用在另一个表达式之中，必须放在圆括号里面；yield表达式用作函数参数或放在赋值表达式的右边，可以不加括号
+3. 可以将Generator函数赋值给变量的Symbol.iterator属性，使变量可以遍历
+4. yield表达式默认返回值为undefined，在调用next()的时候可以传参，此时参数就会被认为是之前一步的返回值，__首次next传参无效__
+5. return方法会执行finally中的代码，再返回return中的值，结束
+6. yield* 可以在generator中返回其他generator代码，而不用手动遍历
+7. generator应用：
+    1. 异步的同步化表达
+    2. 控制流管理： 
+        多步操作可使用：回调、promise、generator（此时只能全是同步）
 
-::: tip
-for of 本质是一个while循环，判断res.done，若没有则调用iterator的next（）
-:::
+    ::: tip
+    for of 本质是一个while循环，判断res.done，若没有则调用iterator的next（）
+    :::
 
-3. 部署Iterator接口
-4. 作为数据结构
+    3. 部署Iterator接口
+    4. 作为数据结构
 
 ## 十九、Generator 函数的异步应用
 传统方法
@@ -270,3 +270,26 @@ co 模块
 原因是执行分成两段，第一段执行完以后，任务所在的上下文环境就已经结束了。在这以后抛出的错误，原来的上下文环境已经无法捕捉，只能当作参数，传入第二段。
 :::
 
+    1. Generator 函数将异步操作表示得很简洁，但是流程管理却不方便（即何时执行第一阶段、何时执行第二阶段）
+    2. thunk函数：传名调用”的一种实现策略，用来替换某个表达式
+:::tip
+JavaScript 语言是传值调用
+:::
+    3. 在 JavaScript 语言中，Thunk 函数替换的不是表达式，而是多参数函数，将其替换成一个只接受回调函数作为参数的单参数函数。
+    4. CO模块
+
+## 二十、async 函数
+含义  
+基本用法  
+语法  
+async 函数的实现原理  
+与其他异步处理方法的比较  
+实例：按顺序完成异步操作  
+顶层 await  
+
+1. async是语法糖，async函数就是将 Generator 函数的星号（*）替换成async，将yield替换成await，仅此而已。
+2. async四个优化点
+    1. 内置执行器，不需要generator的 next()
+    2. 更好的语义
+    3. 更广的适用性（promise和原始类型值都可以）
+    4. 返回值是promise，直接.then既可
