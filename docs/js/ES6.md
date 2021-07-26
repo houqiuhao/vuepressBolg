@@ -211,6 +211,7 @@ Promise.race()
 
 2、iterator使用方法：
 ```js
+//重点：Symbol.iterator属性！
 NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
 // 或者
 NodeList.prototype[Symbol.iterator] = [][Symbol.iterator];
@@ -231,3 +232,33 @@ Generator 函数的this
 应用
 
 1、Generator返回遍历器对象，有两个特点，一是function函数与名间有个*，二是内部使用yield表达式，定义不同内部状态
+2、yield表达式如果用在另一个表达式之中，必须放在圆括号里面；yield表达式用作函数参数或放在赋值表达式的右边，可以不加括号
+3、可以将Generator函数赋值给变量的Symbol.iterator属性，使变量可以遍历
+4、yield表达式默认返回值为undefined，在调用next()的时候可以传参，此时参数就会被认为是之前一步的返回值，__首次next传参无效__
+5、return方法会执行finally中的代码，再返回return中的值，结束
+6、yield* 可以在generator中返回其他generator代码，而不用手动遍历
+7、generator应用：
+1. 异步的同步化表达
+2. 控制流管理： 
+    多步操作可使用：回调、promise、generator（此时只能全是同步）
+
+::: tip
+for of 本质是一个while循环，判断res.done，若没有则调用iterator的next（）
+:::
+
+3. 部署Iterator接口
+4. 作为数据结构
+
+## 十九、Generator 函数的异步应用
+传统方法
+基本概念
+Generator 函数
+Thunk 函数
+co 模块
+
+1. 传统方法
+    es6之前的异步方法：
+    1. 回调函数
+    2. 事件监听
+    3. 发布/订阅
+    4. Promise对象
