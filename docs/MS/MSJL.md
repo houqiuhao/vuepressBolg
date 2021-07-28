@@ -71,12 +71,17 @@ vue：
 23、如何在js中深冻结对象
 24、iterator是什么有什么作用
 25、Generator函数是什么，有什么用
+26、
 
 
 
-
-
-
+vue路由模式：hash，history      //静态路由？
+引入axios  
+vuex工作机制
+组件传参，路由传参，兄弟传参
+封装组件的方法
+v-modol原理
+数据双向绑定原理：观察者模式+object.defineproperty实现
 
 ## 题记
 
