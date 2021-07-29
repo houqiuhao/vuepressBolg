@@ -90,6 +90,14 @@ v-modol原理
 ```js
 transform: scale(1,0.5)
 ```
+可以用linear-gradient
+```js
+background: linear-gradient(0deg, #fff,#000)
+```
+可以用boxshadow
+```js
+box-shadow: 0 0.5px 0 #000;
+```
 
 ## css画一个三角形
 ```css
@@ -104,4 +112,30 @@ transform: scale(1,0.5)
 ```
 
 ## 清除浮动的方式及原理
-主要引出BFC
+主要引出BFC(block formattion context)
+
+Box 是 CSS 布局的对象和基本单位， 直观点来说，就是一个页面是由很多个 Box 组成的。元素的类型和 display 属性，决定了这个 Box 的类型。 不同类型的 Box， 会参与不同的 Formatting Context（一个决定如何渲染文档的容器），因此Box内的元素会以不同的方式渲染。让我们看看有哪些盒子：
+
+    block-level box:display 属性为 block, list-item, table 的元素，会生成 block-level box。并且参与 block fomatting context；
+    inline-level box:display 属性为 inline, inline-block, inline-table 的元素，会生成 inline-level box。并且参与 inline formatting context；
+    run-in box: css3 中才有， 这儿先不讲了。
+
+Formatting Context
+
+Formatting context 是 W3C CSS2.1 规范中的一个概念。它是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。最常见的 Formatting context 有 Block fomatting context (简称BFC)和 Inline formatting context (简称IFC)。
+
+BFC是一个独立的布局环境，其中的元素布局是不受外界的影响，并且在一个BFC中，块盒与行盒（行盒由一行中所有的内联元素所组成）都会垂直的沿着其父元素的边框排列。
+
+
+    BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。
+
+因为BFC内部的元素和外部的元素绝对不会互相影响，因此， 当BFC外部存在浮动时，它不应该影响BFC内部Box的布局，BFC会通过变窄，而不与浮动有重叠。同样的，当BFC内部有浮动时，为了不影响外部元素的布局，BFC计算高度时会包括浮动的高度。避免margin重叠也是这样的一个道理。
+
+1. BFC的作用是啥
+答：页面上的独立容器，内部元素不会影响外部元素，可以清除浮动，可以分割两框、可以消除外边距重叠
+2. BFC如何触发
+    1. overflow不为visible
+    2. float不为none
+    3. position不为static或者relative
+    4. diaplay值为inline-block、table-cell、flex、table-caption或者inline-flex
+3. position各有啥特点
