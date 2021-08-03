@@ -139,3 +139,16 @@ BFC是一个独立的布局环境，其中的元素布局是不受外界的影�
     3. position不为static或者relative
     4. diaplay值为inline-block、table-cell、flex、table-caption或者inline-flex
 3. position各有啥特点
+
+
+
+## vue
+1. VUE的双向数据绑定及v-model如何实现
+2. 对MVVM的理解
+3. V-IF和v-show的区别
+4. v-for为何不能使用index作为key
+5. vue的生命周期以及那些周期做那些事情，父子组件周期顺序
+6. vue的组件通信，包括父子组件和兄弟组件及不相干组件，vuex通讯
+7. 组件渲染及更新的过程，（初次渲染和异步渲染）
+8. computed和watch及method区别
+9. 自己实现v-model
