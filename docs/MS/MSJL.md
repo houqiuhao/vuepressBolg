@@ -18,33 +18,78 @@
     监听属性可以处理异步操作，不需要返回值
 
 4、ES6用过哪些，promise，还有什么实现异步方式
-
+1. let const
+2. 箭头函数
+3. 解构赋值 ...展开运算符
+4. promise
+5. async await
+异步的实现方式：回调，promise，async await， 发布订阅，事件监听
 5、盒模型
+答：盒模型分为两种，一种是标准的盒模型，一种是怪异盒模型，也就是ie的盒模型，标准盒模型中盒子宽度和高度只包括content，怪异盒模型的宽度和高度包括padding和border
 6、性能优化
-7、隐藏元素的方式display：none 、
+答：性能有很多种，比如启动性能，操作性能，反应性能等
+性能的优化可以分别从以下几个方面进行：图片优化、请求优化、展示优化、
+性能优化有以下几种方式：
+1. 使用pwa将静态的文件缓存
+2. 使用icon替代小图片
+3. 
+7、隐藏元素的方式 
+答：display：none 、visiblity：hidden，将元素放置在不可见的位置，opacity设置为0。
+
 8、
 
 ## 0715 中软国际
 从html开始：
 1、块级元素有什么，行内元素有什么
+答：块级元素： div、p、h1-h6、nav、ul、ol、li、
+行内元素： a、i、span、b、
+行内块级标签： img、input、表单元素列表标签
 2、H5标签都有啥
+答：footer、nav、video、audio、section 
+
 3、单选框如何在点击字的时候也能选
+答：使用lable标签将单选框包裹
 4、如何引入js和css(除了import？)
+可以使用link引入
 
 css：
 1、CSS如何实现圆角，如果border-redius设置为100%是怎样
+答：使用border-redius，设置100%会是个圆角
 2、CSS如何设置溢出展示点点点
+```js
+//单行
+overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+//多行
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;/显示几行/
+overflow: hidden;
+```
 3、css有什么伪类，如何获取ul的最后一个li，如何获取偶数个li
+答：after、first-child、nth-child（）
+偶数元素可以使用 nth-child（odd）、奇数为（even）
+link、visited、hover、active
+//a:hover 必须在 CSS 定义中的 a:link 和 a:visited 之后，才能生效！a:active 必须在 CSS 定义中的 a:hover 之后才能生效！伪类名称对大小写不敏感。
 4、有什么方法隐藏元素，两种方法有什么区别
-5、让水平垂直居中，在父级设置怎么处理   
+同上
+5、让水平垂直居中，在父级设置怎么处理
+答：父级元素display设置为flex，justify-content：center，align-item：center，
 6、如何获取元素？属性选择器
+属性选择器：target
 
 js：
 1、有哪些数据类型
+答：基础数据类型有：number、Boolean、String、Null、undefined、object、symbol
 2、const能不能修改
+答：函数的内容可以改，对象的属性可以改
 3、js中eval的作用
+
 4、保存用户登录状态的方式
+使用locolstory储存或者cookie储存
 5、sessionstorey和localstorey区别
+答：前者页面刷新就没了，后者不手动清除一直在
 6、如何获取当前页面url：window.local.href
 
 vue：
@@ -191,7 +236,25 @@ BFC是一个独立的布局环境，其中的元素布局是不受外界的影�
 
 #### css
 1. 如何实现响应式布局
+答：使用媒体查询，根据不同的设备设置不同的css，也可以使用rem设置大小来适配
+
 2. flex各个属性
+答 父级：
+flex-direction：row、column
+flex-wrap：wrap、nowrap
+justify-content，有center、spase-between、spase-around、flex-start、flex-end、spase-evenly
+align-content，有center、spase-around、spase-between、flex-start、flex-end、spase-stretch
+align-item，有flex-start、flex-end、center、stretch、baseline
+flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap
+子级：
+order：数值，越小越靠前
+flex-grow：放大比例，默认为0
+flex-shrink：缩小比例，默认为1
+flex-basis：默认所占空间，默认为auto
+flex，flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选
+align-self：auto | flex-start | flex-end | center | baseline | stretch;
+align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。
+
 3. animation各个时间的含义
 4. 实现让一个元素旋转并横向移动，只有一个css属性的话
 5. less和sass区别，选型如何取舍
