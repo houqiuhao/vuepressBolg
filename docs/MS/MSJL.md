@@ -30,6 +30,23 @@
 答：性能有很多种，比如启动性能，操作性能，反应性能等
 性能的优化可以分别从以下几个方面进行：图片优化、请求优化、展示优化、
 性能优化有以下几种方式：
+网站：lighthouse、peformance、webpageTest、pagespeed insights
+资源打包分析：webpack-bundle-analyzer、source-map
+监听页面切换事件：visibilitychange事件
+1. 页面内容
+    减少http请求，减少DNS查询，避免重定向，缓存ajax请求，延迟加载，预加载，减少dom元素数量，划分内容到不同域名，减少iframe错误，避免404
+2. 服务器
+    使用CDN，启动Gzip，配置Etag，ajax请求使用get，避免图片src为空
+3. cookie
+    减少大小，静态资源使用无cookie域名
+4. 移动端
+    文件大小限制小于25kb，打包内容分段multipart文档
+5. 图片
+    优化图片，优化css sprite，不在html中缩放图片，使用体积小可缓存的favicon.ico
+6. JavaScript
+    脚本放在底部，使用外部js和css，压缩jscss，移除重复，减少dom操作，高校事件处理
+7. css
+    样式表放在head中，不使用css表达式，link代替import，不用fliter
 1. 使用pwa将静态的文件缓存
 2. 使用icon替代小图片
 3. 
@@ -278,6 +295,7 @@ align-self属性允许单个项目有与其他项目不一样的对齐方式，�
 #### webpack
 1. loader和plugin是什么
 2. 如何提高打包速度
+    答：使用DllPlugin，将较大的，少升级的包拆分出来，生成xx.dll.js文件，通过manifest.json引用
 3. webapck中chunkHash和contentHash区别
 4. 处理image是哪个loader 限制image大小的是
 5. webpack将css合并成一个
