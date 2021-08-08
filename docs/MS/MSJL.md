@@ -1,78 +1,79 @@
 ## 0705 易宝 华为云
 1、vuex 中哪个是异步
-答：action，vuex中有state mutation，set，get，action，modules
+    答：action，vuex中有state mutation，set，get，action，modules
 
 2、vue生命周期，actived和mounted区别
-答：生命周期有
-1. beforecreate：此时只创建了vue实例,数据观察和事件机制还未形成
-2. created、此时创建了vue实例，可获取$vm,无法获取dom
-3. beforeMount、此时vue挂在的根节点已创建，
-4. mounted、此时dom挂载完成，可以进行操作，绘制完成，一般异步请求都写在这
-5. beforeUpdate、数据更新后没有立即更新，但dom数据会改变
-6. updated、dom和更改过的内容同步
-7. beforedestroy、可以做自定义事件的接触绑定，定时任务销毁，绑定的window和document事件销毁
-8. destroyed，
+    答：生命周期有
+    1. beforecreate：此时只创建了vue实例,数据观察和事件机制还未形成
+    2. created、此时创建了vue实例，可获取$vm,无法获取dom
+    3. beforeMount、此时vue挂在的根节点已创建，
+    4. mounted、此时dom挂载完成，可以进行操作，绘制完成，一般异步请求都写在这
+    5. beforeUpdate、数据更新后没有立即更新，但dom数据会改变
+    6. updated、dom和更改过的内容同步
+    7. beforedestroy、可以做自定义事件的接触绑定，定时任务销毁，绑定的window和document事件销毁
+    8. destroyed，
 
 3、计算属性和监听属性区别
-答：计算属性会有缓存，只有在响应式依赖发生改变的时候会重新计算，不支持异步操作，需要返回值
-    监听属性可以处理异步操作，不需要返回值
+    答：计算属性会有缓存，只有在响应式依赖发生改变的时候会重新计算，不支持异步操作，需要返回值
+        监听属性可以处理异步操作，不需要返回值
 
 4、ES6用过哪些，promise，还有什么实现异步方式
-1. let const
-2. 箭头函数
-3. 解构赋值 ...展开运算符
-4. promise
-5. async await
-异步的实现方式：回调，promise，async await， 发布订阅，事件监听
+    1. let const
+    2. 箭头函数
+    3. 解构赋值 ...展开运算符
+    4. promise
+    5. async await
+    异步的实现方式：回调，promise，async await， 发布订阅，事件监听
 5、盒模型
-答：盒模型分为两种，一种是标准的盒模型，一种是怪异盒模型，也就是ie的盒模型，标准盒模型中盒子宽度和高度只包括content，怪异盒模型的宽度和高度包括padding和border
+    答：盒模型分为两种，一种是标准的盒模型，一种是怪异盒模型，也就是ie的盒模型，标准盒模型中盒子宽度和高度只包括content，怪异盒模型的宽度和高度包括padding和border
 6、性能优化
-答：性能有很多种，比如启动性能，操作性能，反应性能等
-性能的优化可以分别从以下几个方面进行：图片优化、请求优化、展示优化、
-性能优化有以下几种方式：
-网站：lighthouse、peformance、webpageTest、pagespeed insights
-资源打包分析：webpack-bundle-analyzer、source-map
-监听页面切换事件：visibilitychange事件
-1. 页面内容
-    减少http请求，减少DNS查询，避免重定向，缓存ajax请求，延迟加载，预加载，减少dom元素数量，划分内容到不同域名，减少iframe错误，避免404
-2. 服务器
-    使用CDN，启动Gzip，配置Etag，ajax请求使用get，避免图片src为空
-3. cookie
-    减少大小，静态资源使用无cookie域名
-4. 移动端
-    文件大小限制小于25kb，打包内容分段multipart文档
-5. 图片
-    优化图片，优化css sprite，不在html中缩放图片，使用体积小可缓存的favicon.ico
-6. JavaScript
-    脚本放在底部，使用外部js和css，压缩jscss，移除重复，减少dom操作，高校事件处理
-7. css
-    样式表放在head中，不使用css表达式，link代替import，不用fliter
-1. 使用pwa将静态的文件缓存
-2. 使用icon替代小图片
-3. 
+    答：性能有很多种，比如启动性能，操作性能，反应性能等
+    性能的优化可以分别从以下几个方面进行：图片优化、请求优化、展示优化、
+    性能优化有以下几种方式：
+    网站：lighthouse、peformance、webpageTest、pagespeed insights
+    资源打包分析：webpack-bundle-analyzer、source-map
+    监听页面切换事件：visibilitychange事件
+    1. 页面内容
+        减少http请求，减少DNS查询，避免重定向，缓存ajax请求，延迟加载，预加载，减少dom元素数量，划分内容到不同域名，减少iframe错误，避免404
+    2. 服务器
+        使用CDN，启动Gzip，配置Etag，ajax请求使用get，避免图片src为空
+    3. cookie
+        减少大小，静态资源使用无cookie域名
+    4. 移动端
+        文件大小限制小于25kb，打包内容分段multipart文档
+    5. 图片
+        优化图片，优化css sprite，不在html中缩放图片，使用体积小可缓存的favicon.ico
+    6. JavaScript
+        脚本放在底部，使用外部js和css，压缩jscss，移除重复，减少dom操作，高校事件处理
+    7. css
+        样式表放在head中，不使用css表达式，link代替import，不用fliter
+    1. 使用pwa将静态的文件缓存
+    2. 使用icon替代小图片
+    3. 
 7、隐藏元素的方式 
-答：display：none 、visiblity：hidden，将元素放置在不可见的位置，opacity设置为0。
+    答：display：none 、visiblity：hidden，将元素放置在不可见的位置，opacity设置为0。
 
 8、
 
 ## 0715 中软国际
 从html开始：
 1、块级元素有什么，行内元素有什么
-答：块级元素： div、p、h1-h6、nav、ul、ol、li、
-行内元素： a、i、span、b、
-行内块级标签： img、input、表单元素列表标签
+    答：块级元素： div、p、h1-h6、nav、ul、ol、li、
+    行内元素： a、i、span、b、
+    行内块级标签： img、input、表单元素列表标签
 2、H5标签都有啥
-答：footer、nav、video、audio、section 
+    答：footer、nav、video、audio、section 
 
 3、单选框如何在点击字的时候也能选
-答：使用lable标签将单选框包裹
+    答：使用lable标签将单选框包裹
 4、如何引入js和css(除了import？)
-可以使用link引入
+    可以使用link引入
 
 css：
 1、CSS如何实现圆角，如果border-redius设置为100%是怎样
-答：使用border-redius，设置100%会是个圆角
+    答：使用border-redius，设置100%会是个圆角
 2、CSS如何设置溢出展示点点点
+
 ```js
 //单行
 overflow: hidden;
@@ -84,29 +85,30 @@ display: -webkit-box;
 -webkit-line-clamp: 3;/显示几行/
 overflow: hidden;
 ```
+
 3、css有什么伪类，如何获取ul的最后一个li，如何获取偶数个li
-答：after、first-child、nth-child（）
-偶数元素可以使用 nth-child（odd）、奇数为（even）
-link、visited、hover、active
-//a:hover 必须在 CSS 定义中的 a:link 和 a:visited 之后，才能生效！a:active 必须在 CSS 定义中的 a:hover 之后才能生效！伪类名称对大小写不敏感。
+    答：after、first-child、nth-child（）
+    偶数元素可以使用 nth-child（odd）、奇数为（even）
+    link、visited、hover、active
+    //a:hover 必须在 CSS 定义中的 a:link 和 a:visited 之后，才能生效！a:active 必须在 CSS 定义中的 a:hover 之后才能生效！伪类名称对大小写不敏感。
 4、有什么方法隐藏元素，两种方法有什么区别
-同上
+    同上
 5、让水平垂直居中，在父级设置怎么处理
-答：父级元素display设置为flex，justify-content：center，align-item：center，
+    答：父级元素display设置为flex，justify-content：center，align-item：center，
 6、如何获取元素？属性选择器
-属性选择器：target
+    属性选择器：target
 
 js：
 1、有哪些数据类型
-答：基础数据类型有：number、Boolean、String、Null、undefined、object、symbol
+    答：基础数据类型有：number、Boolean、String、Null、undefined、object、symbol
 2、const能不能修改
-答：函数的内容可以改，对象的属性可以改
+    答：函数的内容可以改，对象的属性可以改
 3、js中eval的作用
 
 4、保存用户登录状态的方式
-使用locolstory储存或者cookie储存
+    使用locolstory储存或者cookie储存
 5、sessionstorey和localstorey区别
-答：前者页面刷新就没了，后者不手动清除一直在
+    答：前者页面刷新就没了，后者不手动清除一直在
 6、如何获取当前页面url：window.local.href
 
 vue：
@@ -218,6 +220,8 @@ BFC是一个独立的布局环境，其中的元素布局是不受外界的影�
     4. diaplay值为inline-block、table-cell、flex、table-caption或者inline-flex
 3. position各有啥特点
 
+## 画一个同心圆的方式：
+如果是一个div+css 用border-radius+ box-shadow画
 
 
 ## vue
@@ -273,7 +277,9 @@ align-self：auto | flex-start | flex-end | center | baseline | stretch;
 align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。
 
 3. animation各个时间的含义
+
 4. 实现让一个元素旋转并横向移动，只有一个css属性的话
+transform: rotate(45deg) translate(100px, -100PX)
 5. less和sass区别，选型如何取舍
 #### js
 1. new和其他区别
@@ -314,3 +320,72 @@ align-self属性允许单个项目有与其他项目不一样的对齐方式，�
 2. git reset和revert区别 ，revert多个mr如何处理
 3. git add后如何撤销
 4. 
+
+
+
+### js判断数据类型的方法
+    1. typeOf、isInstanceOf、Array.isArray、Object.prototype.toString().call(),constructor
+
+### js数组去重的方式
+    1、Array.from(new Set())
+    2. 双重for循环加splice
+    3. 利用indexOf+push新数组
+    4. 利用includes+push新数组
+    5. fliter + indexOf
+
+
+
+
+## 度小满
+
+### 自我介绍及项目介绍，主要做哪些，遇到哪些问题
+
+### 技术
+1. BFC 及BFC的触发条件
+2. 回流和重绘
+3. 写所知道的垂直水平居中，还有没有
+4. ES6说说
+5. 手写promise
+6. vue生命周期
+7. 手写deepClone
+
+
+## 数坤
+node：
+1. 进程和线程理解
+2. nodjs事件循环机制
+3. js什么线程，（事件循环机制）
+4. js执行对浏览器页面渲染有啥影响（浏览器有多个线程）
+css
+1. BFC
+2. position有哪些，各有什么特点
+3. 水平垂直居中方法
+4. 
+
+js
+1. 说说this
+2. 题判断this的指向
+3. 数组乱序（sort（random））
+```js
+let arr = [1,2,3,4,5]
+var randowm = function () {
+    return 0.5 - Math.random()
+}
+arr.sort(randowm)
+```
+4. 数组取中间大小值
+
+
+## MT
+1. 项目，项目中最有成就的点
+2. 项目中http的返回码都有用到过哪些，301，302有没有用到过
+3. http的缓存机制
+    答：分为强制缓存和比较缓存，强制缓存设置max-age，如果没过期使用缓存，比较缓存设置etag/last-none-match或者last-modified/If-Modified-Since
+4. vue data为什么是函数
+5. vue computer和watch有什么区别
+6. vue 生命周期，created中能不能异步请求数据
+    答： created的时候data已经生成了，可以请求数据
+7. 组件传参，多种形式，如果嵌套十层，静态传参，有什么方法
+8. 写一个eventbus
+9. webpack的流程，loader和plugin区别
+10.  

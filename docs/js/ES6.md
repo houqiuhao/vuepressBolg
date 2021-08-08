@@ -180,7 +180,7 @@ Promise.prototype.then()
 Promise.prototype.catch()
 Promise.prototype.finally()
 Promise.all()   //多个promise实例包装为一个，状态都为fulfilled时候，总的才会是fulfilled，有一个rejected就会rejected
-Promise.race()  
+Promise.race()  //多个封装为一个，只要有一个改变就会跟着改变
 Promise.allSettled()   //包装， 不管什么状态，全部返回后才处理总的
 Promise.any()
 Promise.resolve()
