@@ -389,3 +389,15 @@ arr.sort(randowm)
 8. 写一个eventbus
 9. webpack的流程，loader和plugin区别
 10.  
+
+
+
+
+### concant 和 join区别
+
+### 问题
+1. 弹窗组件
+2. 手写promise，promise实现原理
+3. 手写ajax
+4. webpack 工作原理
+5. vue router原理
