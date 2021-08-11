@@ -59,6 +59,24 @@
 11. 对MVVM看法，单页面和多页面的优劣
 12. data为什么为函数
 13. 自定义指令
+14. vue mixin
+    1. 混入，
+        ```js
+            var myMixin = {
+                created: function() {
+                    this.hello()
+                },
+                methods: {
+                    hello: function() {
+                        console.log('hello')
+                    }
+                }
+            }
+            var Component = Vue.extend({
+                mixins: [myMixin]
+            })
+            var component = new Component() // ==> 'hello'
+        ```
 
 ## HTTP
 1. http状态码

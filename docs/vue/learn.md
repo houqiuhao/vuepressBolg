@@ -59,3 +59,26 @@ data() {
 :class="[{ active: isActive==1 }, 'sort']"
 或者
 :class="[{ active: isActive==index }, 'sort']"
+
+
+
+
+
+### EventBus
+```js
+    //1
+    const EventBus = new vue()
+
+    //2
+    Vue.prototype.$EventBus = new Vue()
+
+    //全局
+    var EventBus = new Vue()
+    Object.defineProperties(Vue.prototype, {
+      $bus: {
+        get: function () {
+          return EventBus
+        }
+      }
+    })
+```
