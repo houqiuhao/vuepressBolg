@@ -357,6 +357,7 @@ transform: rotate(45deg) translate(100px, -100PX)
 5. 事件循环机制，做题
 6. vue数组做了哪些修改，修改后什么api可以响应式
 7. 一维数组变多重数组
+8. 选择器和优先级
 
 ## 数坤
 node：
@@ -400,7 +401,14 @@ arr.sort(randowm)
 10.  
 
 
-
+### PDD
+1. 项目
+    webapck，loader和plugin，webapck怎么写的，有构建还是手动写
+2. 简历问下去，node，甚至c++？
+3. 居中方式
+4. ES5继承方式
+5. 手写传入一个dom，一个id，查找dom中id的子dom
+6. 什么项目是持续的，瞎扯
 
 ### concant 和 join区别
 
