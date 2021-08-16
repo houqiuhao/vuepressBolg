@@ -6,8 +6,8 @@
 ## CSS
 1. 水平垂直居中
     1. 父级flex + justify-content + align-item
-    2. position:absolution/fixed + top/left/buttom/right : 0 + margin: auto
-    3. position:absolution/fixed + top/left: 50% + margin-left/top或transform: translate: (50%, 50%)
+    2. position:absolute/fixed + top/left/buttom/right : 0 + margin: auto
+    3. position:absolute/fixed + top/left: 50% + margin-left/top或transform: translate: (50%, 50%)
     4. display:table-cell + vertical-align: middle + align-item: center
     5. js获取document.documentElement.clientHeight，加子元素offsetHeight 
 2. 清除浮动/BFC
@@ -95,3 +95,31 @@
 1. 进程和线程理解
 2. node事件循环机制
 
+
+
+
+## 2021/08/14  16:40自问自答  三个问题：1、flex的主轴问题，flex：1 的问题及属性巩固，2、js原型和原型链 3、js 继承的方式
+1. css中有哪几种垂直居中的方式
+    1. 垂直居中最常用的就是flex，justify-content和align-item设置为center
+    2. position设置为fixed或者absolute，left，right，top，bottom设置为0，margin设置为auto
+    3. positon：fixed/absolute，top: 50%,left: 50%; transform: translate(-50%，-50%) 
+    4. 同3，margin-top和margin-left设置为自身宽高的一半
+    5. display：table-cell；vertical-align：middle；text-align：center
+2. 居中你说了flex，对flex的justify-content和align-item你是怎么理解的，flex：1 代表什么
+    答： 1、在flex布局中，flex的主轴由flex-direction决定，如果为row则主轴为横向，如果为column则主轴为纵向，justify-content就代表flex中的主轴，而align-item就代表了纵轴
+        2、flex属性设置在子元素上，是flex-grow，flex-shrink，flex-base的简写形式，后两个属性可选，所以flex：1 ，代表的是flex-grow设置为1，即放大比例设置为1，会与其它设置放大比例的元素瓜分剩余区域。
+3. 那position的absolute和fixed有什么区别
+    fixed是以视窗来定位的，absolute是以static以外的父元素来定位的（relative或者absolute），如果没有，则为body元素,
+4. 说说回流和重绘
+    回流就是当我们修改dom的几何属性，如宽高等，浏览器会重新计算元素的几何属性，然后将计算后的结果绘制出来
+    重绘就是当修改dom的样式，不影响几何属性的时候，浏览器直接重新绘制此元素的样式。
+    回流必然重绘，重绘不一定回流
+5. 说说输入URL后都发生了什么
+    1. DNS域名解析
+    2. TCP链接
+    3. http请求
+    4. 服务器处理http请求
+    5. 服务器发送处理结果
+    6. 关闭TCP链接
+    7. 浏览器解析HTML
+    8. 浏览器渲染
