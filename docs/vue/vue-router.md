@@ -1,3 +1,12 @@
+---
+title: vue-router
+date: 2021-08-04 19:56:31
+permalink: /pages/b04717/
+categories:
+  - vue
+tags:
+  - 
+---
 # 基础
 ## vue route
 使用方式：

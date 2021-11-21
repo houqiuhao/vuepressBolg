@@ -1,3 +1,12 @@
+---
+title: learn
+date: 2021-08-11 21:30:10
+permalink: /pages/76d14e/
+categories:
+  - vue
+tags:
+  - 
+---
 vue动态绑定class的几种方式
 对象方法
 -最简单的绑定（这里的active加不加单引号都可以，以下也一样都能渲染）

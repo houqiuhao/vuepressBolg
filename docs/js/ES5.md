@@ -1,3 +1,12 @@
+---
+title: ES5
+date: 2021-07-11 15:44:20
+permalink: /pages/821039/
+categories:
+  - js
+tags:
+  - 
+---
 # javascript 基础教学
 
 ## 数据类型

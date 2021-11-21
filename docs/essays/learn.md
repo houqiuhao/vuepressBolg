@@ -1,3 +1,12 @@
+---
+title: learn
+date: 2021-06-08 22:49:13
+permalink: /pages/6ef1db/
+categories:
+  - essays
+tags:
+  - 
+---
 # 随笔记录
 
 ## 工具简介记录

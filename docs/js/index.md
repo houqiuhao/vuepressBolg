@@ -1,3 +1,12 @@
+---
+title: index
+date: 2021-04-13 22:01:34
+permalink: /pages/eeac76/
+categories:
+  - js
+tags:
+  - 
+---
    # js总结记录
 
    ## js手写实例

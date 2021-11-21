@@ -1,3 +1,12 @@
+---
+title: index
+date: 2021-04-13 22:03:08
+permalink: /pages/4fffe6/
+categories:
+  - vue
+tags:
+  - 
+---
  # vue总结记录
 
  ## VUE 特性

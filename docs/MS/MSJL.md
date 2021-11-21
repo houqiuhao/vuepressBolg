@@ -1,3 +1,12 @@
+---
+title: MSJL
+date: 2021-08-09 23:55:43
+permalink: /pages/1b7b85/
+categories:
+  - MS
+tags:
+  - 
+---
 ## 0705 易宝 华为云
 1、vuex 中哪个是异步
     答：action，vuex中有state mutation，set，get，action，modules

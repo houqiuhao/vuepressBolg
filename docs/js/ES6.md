@@ -1,3 +1,12 @@
+---
+title: ES6
+date: 2021-07-26 21:05:28
+permalink: /pages/03694f/
+categories:
+  - js
+tags:
+  - 
+---
 # 
 
 ## 一、let与const

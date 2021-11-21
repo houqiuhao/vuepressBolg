@@ -1,3 +1,12 @@
+---
+title: jsDaily
+date: 2021-07-25 10:12:37
+permalink: /pages/91ad9b/
+categories:
+  - js
+tags:
+  - 
+---
 ## js类型判断
 
  typeof 和 instanceof区别

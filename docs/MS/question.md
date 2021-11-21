@@ -1,3 +1,12 @@
+---
+title: question
+date: 2021-08-11 21:30:10
+permalink: /pages/1bfea3/
+categories:
+  - MS
+tags:
+  - 
+---
 ## HTML
 1. html5标签
 2. 语义化
@@ -123,3 +132,4 @@
     6. 关闭TCP链接
     7. 浏览器解析HTML
     8. 浏览器渲染
+6. 
