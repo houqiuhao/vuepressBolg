@@ -1,3 +1,12 @@
+---
+title: bat
+date: 2021-11-22 23:33:59
+permalink: /pages/c27856/
+categories:
+  - system
+tags:
+  - 
+---
 ## use bat
 使用bat编写脚本记录： 
 1、调用其他脚本并不关闭本脚本：call ***.bat   //当其他脚本中有exit的时候会直接将脚本退出
