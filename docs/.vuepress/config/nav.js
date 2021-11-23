@@ -76,4 +76,8 @@ module.exports = [
             }
         ]
     },
+    {
+        text: '随笔',
+        link: '/pages/5f34e2/'
+    }
 ]
