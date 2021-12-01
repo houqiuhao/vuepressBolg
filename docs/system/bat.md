@@ -1,5 +1,5 @@
 ---
-title: bat
+title: bat脚本编写学习
 date: 2021-11-22 23:33:59
 permalink: /pages/c27856/
 categories:
