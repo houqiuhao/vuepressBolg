@@ -12,6 +12,9 @@ features:
 - title: 技术积累
   details: 不积硅步无以至千里
   link: /technology/
+- title: 随性随笔
+  details: 我思故我在
+  link: /essay/
 # - title: 高性能
 #   details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
 # footer: MIT Licensed | Copyright © 2018-present Evan You
