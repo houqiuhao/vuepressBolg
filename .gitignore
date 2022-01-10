@@ -1,7 +1,19 @@
+# npm
+package-lock.json
+node_modules
+
+# yarn
+yarn.lock
+
+# vscode
+.vscode
+
+# vuepress
+docs/.vuepress/dist
+
+# 百度链接推送
+urls.txt
+
+# mac
 .DS_Store
-node_modules*
-node_modules/*
-*/node_modules/*
-node_modules/@vuepress/core/.temp/internal/page-components.js
-node_modules/@vuepress/core/.temp/internal/app-enhancers.js
-node_modules/@vuepress/core/node_modules/.cache/vuepress/ef5c661d0fb8b2da6c506041dfbc4395.json
+

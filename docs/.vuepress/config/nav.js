@@ -77,17 +77,17 @@ module.exports = [
         ]
     },
     {
-        text: '随笔',
-        link: '/essay/',
+        text: '杂谈总结',
+        link: '/interviewSummary',
         items: [
-            {
-                text: '你在想什么',
-                link: '/pages/5f34e2/'
-            },
-            {
-                text: '2021年要结束了',
-                link: '/pages/9f175f/'
-            }
+            // {
+            //     text: '你在想什么',
+            //     link: '/pages/5f34e2/'
+            // },
+            // {
+            //     text: '2021年要结束了',
+            //     link: '/pages/9f175f/'
+            // }
         ]
     }
 ]

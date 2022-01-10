@@ -21,7 +21,7 @@ module.exports = {
         // avatar: 'https://cdn.jsdelivr.net/gh/xugaoyi/image_store/blog/20200103123203.jpg',
         avatar: '/img/head.jpg',
         name: 'Hammer',
-        slogan: '菜的跟锤子一样',
+        slogan: '愿知晓并笃行',
     },
     footer: {
         // 页脚信息
