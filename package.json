@@ -23,7 +23,9 @@
   },
   "homepage": "https://github.com/houqiuhao/vuepressBolg#readme",
   "devDependencies": {
-    "vuepress": "^1.8.2",
-    "vuepress-theme-vdoing": "^1.8.6"
+    "vuepress": "^1.8.2"
+  },
+  "dependencies": {
+    "vuepress-theme-vdoing": "^1.9.4"
   }
 }
