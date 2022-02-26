@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" >
+        <h2>{{person.name}} -- {{person.age}}</h2>
+        <h3>{{msg}}</h3>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div v-text="msg"></div>
+        <div v-html="htmlStr"></div>
+        <input type="text" v-model="msg"></input>
+        <button v-on:click="handlerClick"></button>
+    </div>
+</body>
+</html>
+<script src="./MVue.js"></script>
+<script src="./Observer.js"></script>
+<script>
+    let vm = new MVue({
+        el: '#app',
+        data: {
+            person: {
+                name: 'hodlen',
+                age: 18,
+                fav: 'hammer'
+            },
+            msg: 'learn'
+        },
+        methods: {
+            handlerClick(){
+                console.log(this)
+            }
+        }
+    })
+
+</script>
