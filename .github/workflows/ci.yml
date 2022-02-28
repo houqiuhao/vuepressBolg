@@ -10,7 +10,7 @@ jobs:
     - name: vuepress-deploy
       uses: houqiuhao/vuepressBlog@master
       env:
-        ACCESS_TOKEN: ${{ secrets.hammer }}
+        ACCESS_TOKEN: ${{ secrets.HAMMER }}
         TARGET_REPO: houqiuhao/repo
         TARGET_BRANCH: master
         BUILD_SCRIPT: yarn && yarn build
