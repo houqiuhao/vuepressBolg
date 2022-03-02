@@ -140,4 +140,76 @@ function resolvePromise(promise2, x, resolve, reject) {
         resolve(x)
     }
 }
+// Promise.all, 所有的promise都处理完毕返回结果，若出错则返回出错
+MyPromise.all = (params) => {
+    return new MyPromise((resolve, reject) => {
+        // if ...
+        let result = []
+        let count = 0
+        params.forEach((event,index) => {
+            MyPromise.resolve(event).then((value) => {
+                result[index] = value
+                count++
+                (count === params.length) && resolve(result) 
+            }, (error) => {
+                reject(error)
+            })
+        });
+    })
+}
+// race 的效果是先到先得
+MyPromise.race = (params) => {
+    return new MyPromise((resolve, reject) => {
+        params.forEach((event) => {
+            MyPromise.resolve(event).then((value) => {
+                resolve(value)
+            },(error) => {
+                reject(error)
+            })
+        })
+    })
+}
+
+// any 谁快谁先，全错才返错
+MyPromise.any = (params) => {
+    return new MyPromise((resolve, reject) => {
+        let result = []
+        count = 0
+        params.forEach((event,index) => {
+            MyPromise.resolve(event).then(resolve,(error) => {
+                result[index] = {status: 'rejected', val: error}
+                count++
+                (count === params.length) && reject(new Error('rejected'))
+            })
+        })
+    })
+}
+// allSettled 全部处理完成才返回
+MyPromise.allSettled = (params) => {
+    return new MyPromise((resolve, reject) => {
+        let result = []
+        count = 0
+        handler = (status, val, index) => {
+            result[index] = {status: status,val: val}
+            count++
+            (count === params.length) && resolve(result)
+        }
+        params.forEach((event,index) => {
+            MyPromise.resolve(event).then((val) => {
+                handler('fulfilled', val, index)
+                // result[index] = {status: 'fulfilled', val: val}
+                // count++
+                // (count === params.length) && resolve(result)
+            },(err) => {
+                handler('rejected', err, index)
+                // result[index] = {status: 'rejected', val: err}
+                // count++
+                // (count === params.length) && resolve(result)
+            })
+        })
+    })
+}
+
+// promise 限制并行数量
+
 module.exports = MyPromise
