@@ -211,5 +211,53 @@ MyPromise.allSettled = (params) => {
 }
 
 // promise 限制并行数量
+// promise在异步操作中经常遇到,对多个并发异步过程的处理Promise自身有Promise.all() Promise.allSettled() Promise.race()等，但都没有对并发数量进行控制。
+// 实现一个Schedule类,可以用来对并发数进行控制
+class Schedule {
+	constructor(num) {
+		this.list = []
+		this.MAX_NUM = num
+		this.WORKING_NUM = 0
+	}
+	add(event) {
+		this.list.push(event)
+	}
+	start() {
+		for (let i = 0; i < this.MAX_NUM; i++) {
+			this.doNext()
+		}
+	}
+	doNext() {
+		if (this.list.length && this.WORKING_NUM < this.MAX_NUM) {
+			this.WORKING_NUM++
+			this.list.shift()().then(() => {
+				this.WORKING_NUM--
+				this.doNext()
+			})
+		}
+	}
+}
+
+// 测试代码start
+const timeout = time => new Promise((resolve) => {
+	setTimeout(resolve, time)
+})
+
+const schedule = new Schedule(2)
+
+const addTask = (time, order) => {
+	schedule.add(() => timeout(time).then(() => {
+		console.log(order)
+	}))
+}
+
+addTask(1000, 1)
+addTask(500, 2)
+addTask(300, 3)
+addTask(400, 4)
+
+schedule.start()
+// 测试代码end
+
 
 module.exports = MyPromise
