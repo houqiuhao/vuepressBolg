@@ -4,5 +4,6 @@ module.exports = {
     description: '愿知晓并笃行',
     theme: 'vdoing',
     themeConfig,
-    base: "vuepressBlog"
+    base: "vuepressBlog",
+    dest: "dist"
 }
