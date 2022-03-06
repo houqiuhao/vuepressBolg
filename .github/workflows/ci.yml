@@ -1,5 +1,8 @@
 name: Build and Deploy
-on: [push]
+on: 
+  push:
+    branches:
+      - main
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -11,8 +14,8 @@ jobs:
       uses: houqiuhao/vuepressBlog@main
       env:
         ACCESS_TOKEN: ${{ secrets.HAMMER }}
-        TARGET_REPO: houqiuhao/repo
+        TARGET_REPO: houqiuhao/vuepressBolg
         TARGET_BRANCH: main
-        BUILD_SCRIPT: yarn && yarn build
+        BUILD_SCRIPT: npm && npm run build
         BUILD_DIR: docs/.vuepress/dist
         # CNAME: https://www.xxx.com
