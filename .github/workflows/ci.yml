@@ -16,11 +16,18 @@ jobs:
       run: npm install && npm run build
     # 部署
     - name: vuepress-deploy
-      uses: houqiuhao/vuepressBlog@main
-      env:
-        ACCESS_TOKEN: ${{ secrets.HAMMER }}
-        TARGET_REPO: houqiuhao/vuepressBolg
-        TARGET_BRANCH: main
-        BUILD_SCRIPT: npm && npm run build
-        BUILD_DIR: docs/.vuepress/dist
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      # env:
+      #   ACCESS_TOKEN: ${{ secrets.HAMMER }}
+      #   TARGET_REPO: houqiuhao/vuepressBolg
+      #   TARGET_BRANCH: main
+      #   BUILD_SCRIPT: npm && npm run build
+      #   BUILD_DIR: docs/.vuepress/dist
         # CNAME: https://www.xxx.com
+        with:
+          # 这里的 ACCESS_TOKEN 名字需要和下文中的相对应
+          ACCESS_TOKEN: ${{ secrets.HAMMER }}
+          # 打包后的文件部署到哪个分支上
+          BRANCH: gh-pages
+          # 打包后的文件在哪里
+          FOLDER: docs/.vuepress/dist
