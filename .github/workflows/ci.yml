@@ -15,8 +15,10 @@ jobs:
     - run: git config --global user.email "295142489@qq.com"
     - run: git config --global user.name "houqiuhao"
     # 生成静态文件
-    - name: Buiild
-      run: npm install && npm run build
+    - name: install
+      run: npm install
+    - name: build
+      run: npm run build
     - name: vuepress-deploy
       uses: peaceiris/actions-gh-pages@v3
       # env:
