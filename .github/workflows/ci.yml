@@ -17,6 +17,8 @@ jobs:
     # 生成静态文件
     - name: install
       run: npm install
+    - name: vuepressInstall
+      run: npm install vuepress
     - name: build
       run: npm run build
     - name: vuepress-deploy
