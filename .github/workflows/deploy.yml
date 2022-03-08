@@ -43,7 +43,7 @@ jobs:
            git config user.email "${{ secrets.GIT_EMAIL }}"
            git add .
            git commit -m "Deploying to gh-pages from @ $GITHUB_SHA in $(date +"%Y年%m月%d日 %T %Z")"
-           git push -f https://houqiuhao:${{ secrets.HAMMER_BLOG }}@github.com/houqiuhao/blog.git master:gh-pages
+           git push -f https://houqiuhao:${{ secrets.HAMMER_BLOG }}@github.com/houqiuhao/vuepressBolg.git master:gh-pages
       
 #       # Runs a single command using the runners shell
 #       - name: Run a one-line script
