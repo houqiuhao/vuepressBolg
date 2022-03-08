@@ -18,11 +18,11 @@ jobs:
     - run: rm -rf node_modules/
     # 生成静态文件
     - name: install
-      run: yarn install
+      run: npm install
     # - name: vuepressInstall
     #   run: npm install vuepress
     - name: build
-      run: yarn build
+      run: npm run build
     - name: vuepress-deploy
       uses: peaceiris/actions-gh-pages@v3
       # env:
