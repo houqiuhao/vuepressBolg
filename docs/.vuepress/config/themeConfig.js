@@ -10,6 +10,8 @@ module.exports = {
     docsDir: 'docs', // 编辑的文件夹
     editLinks: true, // 启用编辑
     editLinkText: '编辑',
+    // bodyBgImg: '/img/bg.jpeg',
+
 
     author: {
         // 文章默认的作者信息，可在md文件中单独配置此信息 String | {name: String, link: String}
@@ -19,7 +21,8 @@ module.exports = {
     blogger: {
         // 博主信息，显示在首页侧边栏
         // avatar: 'https://cdn.jsdelivr.net/gh/xugaoyi/image_store/blog/20200103123203.jpg',
-        avatar: '/img/head.jpg',
+        // TODO 部署后获取图片失败了
+        avatar: 'https://s1.ax1x.com/2022/03/08/b2nunA.jpg',
         name: 'Hammer',
         slogan: '愿知晓并笃行',
     },
