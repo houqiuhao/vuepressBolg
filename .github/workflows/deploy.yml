@@ -36,7 +36,7 @@ jobs:
         run: npm run build
       - name: Deploy to Pages
         run: |
-           cd docs/.vuepress/dist
+           cd ./docs/.vuepress/dist
            git config --global init.defaultBranch master
            git init
            git config user.name "houqiuhao"

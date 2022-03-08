@@ -5,5 +5,5 @@ module.exports = {
     theme: 'vdoing',
     themeConfig,
     base: "vuepressBlog",
-    dest: "dist"
+    // dest: "dist"
 }
