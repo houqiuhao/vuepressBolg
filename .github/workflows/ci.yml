@@ -1,41 +1,41 @@
-name: Build and Deploy
-on: 
-  push:
-    branches:
-      - main
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        persist-credentials: false
-        node-version: '14'
-    # - run: git config --global user.email "295142489@qq.com"
-    # - run: git config --global user.name "houqiuhao"
-    - run: chmod -R 777 ./*
-    - run: rm -rf node_modules/
-    # 生成静态文件
-    - name: install
-      run: npm install
-    # - name: vuepressInstall
-    #   run: npm install vuepress
-    - name: build
-      run: npm run build
-    - name: vuepress-deploy
-      uses: peaceiris/actions-gh-pages@v3
-      # env:
-      #   ACCESS_TOKEN: ${{ secrets.HAMMER }}
-      #   TARGET_REPO: houqiuhao/vuepressBolg
-      #   TARGET_BRANCH: main
-      #   BUILD_SCRIPT: npm && npm run build
-      #   BUILD_DIR: docs/.vuepress/dist
-        # CNAME: https://www.xxx.com
-        with:
-          # 这里的 ACCESS_TOKEN 名字需要和下文中的相对应
-          ACCESS_TOKEN: ${{ secrets.HAMMER }}
-          # 打包后的文件部署到哪个分支上
-          BRANCH: gh-pages
-          # 打包后的文件在哪里
-          FOLDER: docs/.vuepress/dist
+# name: Build and Deploy
+# on: 
+#   push:
+#     branches:
+#       - main
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v3
+#       with:
+#         persist-credentials: false
+#         node-version: '14'
+#     # - run: git config --global user.email "295142489@qq.com"
+#     # - run: git config --global user.name "houqiuhao"
+#     - run: chmod -R 777 ./*
+#     - run: rm -rf node_modules/
+#     # 生成静态文件
+#     - name: install
+#       run: npm install
+#     # - name: vuepressInstall
+#     #   run: npm install vuepress
+#     - name: build
+#       run: npm run build
+#     - name: vuepress-deploy
+#       uses: peaceiris/actions-gh-pages@v3
+#       # env:
+#       #   ACCESS_TOKEN: ${{ secrets.HAMMER }}
+#       #   TARGET_REPO: houqiuhao/vuepressBolg
+#       #   TARGET_BRANCH: main
+#       #   BUILD_SCRIPT: npm && npm run build
+#       #   BUILD_DIR: docs/.vuepress/dist
+#         # CNAME: https://www.xxx.com
+#         with:
+#           # 这里的 ACCESS_TOKEN 名字需要和下文中的相对应
+#           ACCESS_TOKEN: ${{ secrets.HAMMER }}
+#           # 打包后的文件部署到哪个分支上
+#           BRANCH: gh-pages
+#           # 打包后的文件在哪里
+#           FOLDER: docs/.vuepress/dist
