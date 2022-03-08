@@ -12,10 +12,10 @@ jobs:
       with:
         persist-credentials: false
         node-version: '14'
-    - run: git config --global user.email "295142489@qq.com"
-    - run: git config --global user.name "houqiuhao"
-    # - run: rm -rf node_modules/
+    # - run: git config --global user.email "295142489@qq.com"
+    # - run: git config --global user.name "houqiuhao"
     - run: chmod -R 777 ./*
+    - run: rm -rf node_modules/
     # 生成静态文件
     - name: install
       run: npm install
