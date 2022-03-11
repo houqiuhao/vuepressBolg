@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: 
+# heroImage: 
 heroText: Hammer's Blog
 tagline: 看向眼前的风景时，自然会错过身后的风景，世界无时无刻不是选择题
 # actionText: action →
