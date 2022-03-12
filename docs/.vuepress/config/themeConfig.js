@@ -11,7 +11,7 @@ module.exports = {
     editLinks: true, // 启用编辑
     editLinkText: '编辑',
     bodyBgImg: '/img/bannerBg.jpg',
-    // bodyBgImgOpacity: 1,
+    bodyBgImgOpacity: 0.9,
 
 
     author: {
