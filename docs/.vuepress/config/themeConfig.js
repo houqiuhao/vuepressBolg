@@ -10,9 +10,8 @@ module.exports = {
     docsDir: 'docs', // 编辑的文件夹
     editLinks: true, // 启用编辑
     editLinkText: '编辑',
-    bodyBgImg: '/img/bannerBg.jpg',
-    bodyBgImgOpacity: 0.9,
-
+    // bodyBgImg: '/img/bannerBg.jpg',
+    // bodyBgImgOpacity: 0.9,
 
     author: {
         // 文章默认的作者信息，可在md文件中单独配置此信息 String | {name: String, link: String}
