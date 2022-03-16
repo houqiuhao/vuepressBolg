@@ -217,11 +217,11 @@ export default {
   beforeMount() {
     this.isSidebarOpenOfclientWidth()
     let mode = storage.get('mode') // 不放在created是因为vuepress不能在created访问浏览器api，如window
-    if(!mode) {
-      storage.set('mode', 'dark')
-      mode = storage.get('mode')
-    }
-    if (mode === 'auto') { // 当未切换过模式，或模式处于'跟随系统'时
+    // if(!mode) {
+    //   storage.set('mode', 'dark')
+    //   mode = storage.get('mode')
+    // }
+    if (!mode || mode === 'auto') { // 当未切换过模式，或模式处于'跟随系统'时
       this._autoMode()
     } else {
       this.themeMode = mode
