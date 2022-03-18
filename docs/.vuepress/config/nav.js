@@ -1,7 +1,7 @@
 module.exports = [
     {text: '首页', link: '/'},
     { 
-        text: '基础知识',
+        text: '前端基础',
         link: '/web/',
         items: [
             {
