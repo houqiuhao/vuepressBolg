@@ -3,7 +3,7 @@
     <!-- banner块 s -->
     <div
       class="banner"
-      :class="{ 'hide-banner': !showBanner }"
+      :class="[{ 'hide-banner': !showBanner }]"
       :style="bannerBgStyle"
     >
       <div
@@ -216,7 +216,8 @@ export default {
         if (this.$themeConfig.bodyBgImg) { // 当有bodyBgImg时，不显示背景
           return ''
         } else { // 网格纹背景
-          return 'background: rgb(40,40,45) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABOSURBVFhH7c6xCQAgDAVRR9A6E4hLu4uLiWJ7tSnuQcIvr2TRYsw3/zOGGEOMIcYQY4gxxBhiDDGGGEOMIcYQY4gxxBhiDLkx52W4Gn1tuslCtHJvL54AAAAASUVORK5CYII=)'
+          //return 'background: rgb(40,40,45) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABOSURBVFhH7c6xCQAgDAVRR9A6E4hLu4uLiWJ7tSnuQcIvr2TRYsw3/zOGGEOMIcYQY4gxxBhiDDGGGEOMIcYQY4gxxBhiDLkx52W4Gn1tuslCtHJvL54AAAAASUVORK5CYII=)'
+          return ` background: linear-gradient(45deg, #000 0, #000 50%, #fff 50%)`
         }
       } else if (bannerBg === 'none') { // 无背景
         if (this.$themeConfig.bodyBgImg) {
@@ -338,6 +339,8 @@ export default {
 
 <style lang="stylus" scoped>
 .home-wrapper
+  width 100%
+  height 100%
   .banner
     width 100%
     min-height 600px
@@ -345,8 +348,22 @@ export default {
     color $bannerTextColor
     position relative
     overflow hidden
+    &::before{
+      // height: 100%
+      // width: 100%
+      content: "HAMMER's BLOG";
+      font-size: 100px
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      color: #fff;
+      mix-blend-mode: difference;
+      animation: banner-move 3s infinite linear alternate
+    }
     .banner-conent
       max-width $homePageWidth
+      color gray
       margin 0px auto
       position relative
       z-index 1
@@ -534,4 +551,13 @@ export default {
       .feature
         h2
           font-size 1.25rem
+
+@keyframes banner-move {
+  0% {
+    transform: translate(-30%, -50%);
+  }
+  100% {
+    transform: translate(-70%, -50%);
+  }
+}
 </style>
