@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>华为机试——访lisp | Hammer&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="愿知晓并笃行">
+    
+    <link rel="preload" href="/vuepressBolg/assets/css/0.styles.425e1e7c.css" as="style"><link rel="preload" href="/vuepressBolg/assets/js/app.92d159cb.js" as="script"><link rel="preload" href="/vuepressBolg/assets/js/2.c937a76a.js" as="script"><link rel="preload" href="/vuepressBolg/assets/js/3.ed4544f5.js" as="script"><link rel="preload" href="/vuepressBolg/assets/js/51.1989026c.js" as="script"><link rel="prefetch" href="/vuepressBolg/assets/js/10.a84229bc.js"><link rel="prefetch" href="/vuepressBolg/assets/js/11.fe58f9c0.js"><link rel="prefetch" href="/vuepressBolg/assets/js/12.06fc3c03.js"><link rel="prefetch" href="/vuepressBolg/assets/js/13.3c4a88ed.js"><link rel="prefetch" href="/vuepressBolg/assets/js/14.c961aa60.js"><link rel="prefetch" href="/vuepressBolg/assets/js/15.153107f3.js"><link rel="prefetch" href="/vuepressBolg/assets/js/16.5972ac9e.js"><link rel="prefetch" href="/vuepressBolg/assets/js/17.fae0334d.js"><link rel="prefetch" href="/vuepressBolg/assets/js/18.74a3187c.js"><link rel="prefetch" href="/vuepressBolg/assets/js/19.c2c9393d.js"><link rel="prefetch" href="/vuepressBolg/assets/js/20.1b19ef84.js"><link rel="prefetch" href="/vuepressBolg/assets/js/21.7934b2d6.js"><link rel="prefetch" href="/vuepressBolg/assets/js/22.770e2ec5.js"><link rel="prefetch" href="/vuepressBolg/assets/js/23.deca2de3.js"><link rel="prefetch" href="/vuepressBolg/assets/js/24.1bb3cfe2.js"><link rel="prefetch" href="/vuepressBolg/assets/js/25.57df786d.js"><link rel="prefetch" href="/vuepressBolg/assets/js/26.4a523e6d.js"><link rel="prefetch" href="/vuepressBolg/assets/js/27.c8a2399b.js"><link rel="prefetch" href="/vuepressBolg/assets/js/28.e783fad3.js"><link rel="prefetch" href="/vuepressBolg/assets/js/29.0788591a.js"><link rel="prefetch" href="/vuepressBolg/assets/js/30.004f2ebc.js"><link rel="prefetch" href="/vuepressBolg/assets/js/31.f50f3268.js"><link rel="prefetch" href="/vuepressBolg/assets/js/32.c3b0dd25.js"><link rel="prefetch" href="/vuepressBolg/assets/js/33.5a798468.js"><link rel="prefetch" href="/vuepressBolg/assets/js/34.559445e9.js"><link rel="prefetch" href="/vuepressBolg/assets/js/35.8bc94b7f.js"><link rel="prefetch" href="/vuepressBolg/assets/js/36.64277864.js"><link rel="prefetch" href="/vuepressBolg/assets/js/37.19f739b7.js"><link rel="prefetch" href="/vuepressBolg/assets/js/38.d6dd43eb.js"><link rel="prefetch" href="/vuepressBolg/assets/js/39.82a8f5e7.js"><link rel="prefetch" href="/vuepressBolg/assets/js/4.10677414.js"><link rel="prefetch" href="/vuepressBolg/assets/js/40.09a5a4ca.js"><link rel="prefetch" href="/vuepressBolg/assets/js/41.fcefeaa9.js"><link rel="prefetch" href="/vuepressBolg/assets/js/42.fc568294.js"><link rel="prefetch" href="/vuepressBolg/assets/js/43.65b91f0f.js"><link rel="prefetch" href="/vuepressBolg/assets/js/44.a8c897e4.js"><link rel="prefetch" href="/vuepressBolg/assets/js/45.aeef5391.js"><link rel="prefetch" href="/vuepressBolg/assets/js/46.d4dd3af5.js"><link rel="prefetch" href="/vuepressBolg/assets/js/47.41054d30.js"><link rel="prefetch" href="/vuepressBolg/assets/js/48.2e4218d3.js"><link rel="prefetch" href="/vuepressBolg/assets/js/49.bdda3840.js"><link rel="prefetch" href="/vuepressBolg/assets/js/5.4dc23a5d.js"><link rel="prefetch" href="/vuepressBolg/assets/js/50.432444cf.js"><link rel="prefetch" href="/vuepressBolg/assets/js/52.24c1688b.js"><link rel="prefetch" href="/vuepressBolg/assets/js/53.804477cf.js"><link rel="prefetch" href="/vuepressBolg/assets/js/54.db9b7cc3.js"><link rel="prefetch" href="/vuepressBolg/assets/js/55.2d7e56c3.js"><link rel="prefetch" href="/vuepressBolg/assets/js/56.d750c04f.js"><link rel="prefetch" href="/vuepressBolg/assets/js/57.fa49f77a.js"><link rel="prefetch" href="/vuepressBolg/assets/js/58.a76fa23a.js"><link rel="prefetch" href="/vuepressBolg/assets/js/59.2c01050b.js"><link rel="prefetch" href="/vuepressBolg/assets/js/6.ef55640e.js"><link rel="prefetch" href="/vuepressBolg/assets/js/60.8ca458ca.js"><link rel="prefetch" href="/vuepressBolg/assets/js/61.983030d1.js"><link rel="prefetch" href="/vuepressBolg/assets/js/62.9f52cd80.js"><link rel="prefetch" href="/vuepressBolg/assets/js/63.dfe980f3.js"><link rel="prefetch" href="/vuepressBolg/assets/js/64.c4118fe8.js"><link rel="prefetch" href="/vuepressBolg/assets/js/65.5281d38c.js"><link rel="prefetch" href="/vuepressBolg/assets/js/66.c7f9effa.js"><link rel="prefetch" href="/vuepressBolg/assets/js/67.e049d0fb.js"><link rel="prefetch" href="/vuepressBolg/assets/js/68.dffe8e30.js"><link rel="prefetch" href="/vuepressBolg/assets/js/69.2ebfd48d.js"><link rel="prefetch" href="/vuepressBolg/assets/js/7.cc27baa5.js"><link rel="prefetch" href="/vuepressBolg/assets/js/70.2c1faf32.js"><link rel="prefetch" href="/vuepressBolg/assets/js/71.83d0e1ca.js"><link rel="prefetch" href="/vuepressBolg/assets/js/8.331d453d.js"><link rel="prefetch" href="/vuepressBolg/assets/js/9.59e76992.js">
+    <link rel="stylesheet" href="/vuepressBolg/assets/css/0.styles.425e1e7c.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vuepressBolg/" class="home-link router-link-active"><!----> <span class="site-name">Hammer's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vuepressBolg/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端基础" class="dropdown-title"><a href="/vuepressBolg/web/" class="link-title">前端基础</a> <span class="title" style="display:none;">前端基础</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>html</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vuepressBolg/pages/6dc399/" class="nav-link">html总结</a></li></ul></li><li class="dropdown-item"><h4>css</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vuepressBolg/pages/9e181c/" class="nav-link">css总结</a></li></ul></li><li class="dropdown-item"><h4>js</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vuepressBolg/pages/dbab9c/" class="nav-link">js继承</a></li><li class="dropdown-subitem"><a href="/vuepressBolg/pages/a7c3cf/" class="nav-link">手写promise</a></li><li class="dropdown-subitem"><a href="/vuepressBolg/pages/fb3995/" class="nav-link">EventEmitter</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="VUE" class="dropdown-title"><a href="/vuepressBolg/technology" class="link-title">VUE</a> <span class="title" style="display:none;">VUE</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepressBolg/pages/4fffe6/" class="nav-link">vue</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="http及浏览器" class="dropdown-title"><a href="/vuepressBolg/interviewSummary" class="link-title">http及浏览器</a> <span class="title" style="display:none;">http及浏览器</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepressBolg/pages/869547/" class="nav-link">http</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="https://s1.ax1x.com/2022/03/08/b2nunA.jpg"> <div class="blogger-info"><h3>Hammer</h3> <span>愿知晓并笃行</span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/vuepressBolg/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端基础" class="dropdown-title"><a href="/vuepressBolg/web/" class="link-title">前端基础</a> <span class="title" style="display:none;">前端基础</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>html</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vuepressBolg/pages/6dc399/" class="nav-link">html总结</a></li></ul></li><li class="dropdown-item"><h4>css</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vuepressBolg/pages/9e181c/" class="nav-link">css总结</a></li></ul></li><li class="dropdown-item"><h4>js</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vuepressBolg/pages/dbab9c/" class="nav-link">js继承</a></li><li class="dropdown-subitem"><a href="/vuepressBolg/pages/a7c3cf/" class="nav-link">手写promise</a></li><li class="dropdown-subitem"><a href="/vuepressBolg/pages/fb3995/" class="nav-link">EventEmitter</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="VUE" class="dropdown-title"><a href="/vuepressBolg/technology" class="link-title">VUE</a> <span class="title" style="display:none;">VUE</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepressBolg/pages/4fffe6/" class="nav-link">vue</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="http及浏览器" class="dropdown-title"><a href="/vuepressBolg/interviewSummary" class="link-title">http及浏览器</a> <span class="title" style="display:none;">http及浏览器</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepressBolg/pages/869547/" class="nav-link">http</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>数据结构与算法</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>算法题</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vuepressBolg/pages/911fbe/" class="sidebar-link">华为机试——单词密钥</a></li><li><a href="/vuepressBolg/pages/af91ce/" class="sidebar-link">华为机试——玩牌高手</a></li><li><a href="/vuepressBolg/pages/f5476b/" aria-current="page" class="active sidebar-link">华为机试——访lisp</a></li><li><a href="/vuepressBolg/pages/ef2e86/" class="sidebar-link">华为机试——参数解析</a></li></ul></section></li></ul> <div class="sidebar-slot sidebar-slot-bottom"><!-- 正方形 -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="3508773082"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script></div></aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-d5e9d2e6><div class="articleInfo" data-v-d5e9d2e6><ul class="breadcrumbs" data-v-d5e9d2e6><li data-v-d5e9d2e6><a href="/vuepressBolg/" title="首页" class="iconfont icon-home router-link-active" data-v-d5e9d2e6></a></li> <li data-v-d5e9d2e6><a href="/vuepressBolg/categories/?category=%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95" title="分类" data-v-d5e9d2e6>数据结构与算法</a></li><li data-v-d5e9d2e6><a href="/vuepressBolg/categories/?category=%E7%AE%97%E6%B3%95%E9%A2%98" title="分类" data-v-d5e9d2e6>算法题</a></li></ul> <div class="info" data-v-d5e9d2e6><div title="作者" class="author iconfont icon-touxiang" data-v-d5e9d2e6><a href="javascript:;" data-v-d5e9d2e6>hammer</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-d5e9d2e6><a href="javascript:;" data-v-d5e9d2e6>2022-03-04</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><!----> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABH1JREFUSA3tVl1oHFUUPmdmd2ltklqbpJDiNnXFmgbFktho7YMPNiJSSZM0+CAYSkUELVhM6YuwIPpgoOKDqOBDC0XE2CQoNtQXBUFTTcCi+Wlh1V2TQExsUzcltd3M9Tt3ZjZzZ2fT+OJTL8yeM+eee757fmeJbq//KQL8X3DUSFOcfr7cRsRtxNQMWueeVzOkaITIGqQHNg5y8+jNW9ldM7A6nTpAjuolUikAwq7CE3WcM2RRDz+XGVgN3FptU/aUSlvq9Pa3iZ1+sgAqJyyAFqkipd9dqiwHF3P65YycLWc/6sqGrvoEoIp6DOFaX5h6+dnfjkWprwqsPk0dUGq5vySwDImC10KxFHgGL1SWoc92O3eVht09qdXNH11I2SsTsJYqMWzihqGMi+A+Garf3BAuuLI5oGlULyNfyB/HYNujwktOfRrMr5t77NmevqaUopx0grnKAyvVpmwUDB4x6FPXuGvYLTDwWsejwgtgkYKPqRJg8SV6xaiZ3ZTppGneS4yfH5/66fZSDHv+QZci/+h5c5UHtpy67JUqGppM0sh0Nc1dW6/N1W5Yoqat8/TU/VnadmdeW2PLLSyh0cvxBs3KbqTmwYPpxN4do/mzE8nEpvX/UMu2Wbp74zUAK5q6WkHns7V0eWkdPbPzd3rxkTGybadYySumVzhcaJFbs5UrEkQ/+CK8gF5dnh/6ciIZ73gwQ927L1IitoxKLXYP3SjYdOrHHfTZhRRlFyrorafPk20B3HPD1y2G3qKZME5Jcf3t/HUC13/8tSd++vqFveMUTwAUxSUFI1QekR1+bIze3D9MF2aq6cPvG72CgnldWCFqyRw3lwH8ZMerjTD9ElRO7Gv44wNpC90aASqGfVlz/Rx17srQ57/UU26hkhQqUB7dBR71WmzQhHUnblGmVOEw0jhbV1n9OlXUDCIRGaNV5Jp43N516fN7JmnTHdfp7Hgy0luO4aMhtkLL8Bi3bUWYvzh5Mn1dTxrL6QmGuRhGL/TiTTxRoEdTszSaq9GR0NGA3KdkOz3hqSV3MIDhQ5IVX/Ivx3umBti2es2h4eZby7x8br1rkf7Mo90AqC8aQ3sJeNzqFRu+vSANAQe3PL7l0HGOAdwDCeZYvNKeoZp1Qfs6Aipndh86HmFRi0LAnEO47wsqM6cdfjh3jBPUzhZy7nvlUfFsamED1VQt6aISHVymXZ/B2aCtIG8AI8xfobj2d3en1wWVhOeHELKmLQ1s211s88comkv4UCwWyF787mJdYXtNfhKAXVqnKTq8QZvGAGGOfaTo5pGZ/PwbUCr5+DPr/1J92JNHr9aOl/F3iI5+O1nfybsGxoimvZ3ViWSluDITw3P37mypheDIPY0tw7+O/5ApbkYw+zpfaUVu32Pi98+defdUhEpZkRFq0aqyNh9FuL9hpYbEm6iwi0z2REd09ZmyENEbuhjDWzKvZXTqKYaBIr3tt5kuPtQBZFvEUwHt60vfCNu41XsksH9Ij1BMMz1Y0OOunHNShFIP5868g5zeXmuLwL9T4b6Q2+KejgAAAABJRU5ErkJggg==">华为机试——访lisp<!----></h1> <div class="page-slot page-slot-top"><!-- 固定100% * 90px可显示，max-height:90px未见显示-->
+     <ins class="adsbygoogle"
+          style="display:inline-block;width:100%;max-height:90px"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="6625304284"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script></div> <div class="theme-vdoing-content content__default"><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> expression <span class="token operator">=</span> <span class="token string">'(let x 2 (mult x (let x 3 y 4 (add x y))))'</span>
+<span class="token keyword">const</span> expression1 <span class="token operator">=</span> <span class="token string">'(let x 3 x 2 x)'</span>
+<span class="token keyword">var</span> <span class="token function-variable function">evaluate</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">expression</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// 当前执行的位置 k, 作用域 field</span>
+	<span class="token keyword">const</span> <span class="token function-variable function">runtime</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">k<span class="token punctuation">,</span> field <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+		<span class="token keyword">let</span> syntax <span class="token operator">=</span> <span class="token string">''</span>
+		<span class="token keyword">let</span> vals <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+		<span class="token keyword">let</span> op <span class="token operator">=</span> <span class="token keyword">null</span>
+		<span class="token keyword">const</span> process <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+		<span class="token keyword">while</span> <span class="token punctuation">(</span>k <span class="token operator">&lt;</span> expression<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">switch</span> <span class="token punctuation">(</span>expression<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">case</span> <span class="token string">' '</span><span class="token operator">:</span>
+					<span class="token comment">// 当收集的串不为空串时</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span>syntax<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 1、let  //2、x  //3、3 //4、x</span>
+						<span class="token comment">// 若操作为null时</span>
+						<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>op<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+							<span class="token comment">// 先对操作赋值</span>
+							op <span class="token operator">=</span> syntax <span class="token comment">// 1、op : let</span>
+							<span class="token comment">// 如果操作为let 则复制作用域</span>
+							<span class="token keyword">if</span> <span class="token punctuation">(</span>op <span class="token operator">==</span> <span class="token string">'let'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+								<span class="token comment">// ??? // 1、{}</span>
+								field <span class="token operator">=</span> <span class="token punctuation">{</span>
+									<span class="token operator">...</span>field
+								<span class="token punctuation">}</span>
+							<span class="token punctuation">}</span>
+						<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>op <span class="token operator">==</span> <span class="token string">'let'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 2、let //3、let</span>
+							process<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>syntax<span class="token punctuation">)</span> <span class="token comment">// 2、[x]  //3、[x,3]</span>
+							<span class="token comment">// 若待处理的结果里有两个值</span>
+							<span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>length <span class="token operator">&gt;=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 3、[x,3]</span>
+								<span class="token keyword">const</span> v <span class="token operator">=</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>process<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 3、3</span>
+								<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isNaN</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+									<span class="token comment">// 如果值为非数，则从作用域中取得</span>
+									field<span class="token punctuation">[</span>process<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> field<span class="token punctuation">[</span>process<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+								<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+									<span class="token comment">// 如果值为数字，则直接赋值</span>
+									field<span class="token punctuation">[</span>process<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> v
+								<span class="token punctuation">}</span>
+								<span class="token comment">// 清空待处理数组</span>
+								process<span class="token punctuation">.</span>length <span class="token operator">=</span> <span class="token number">0</span>
+							<span class="token punctuation">}</span>
+						<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+							<span class="token comment">// 其他情况下，默认为参数</span>
+							vals<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>syntax<span class="token punctuation">)</span>
+						<span class="token punctuation">}</span>
+						syntax <span class="token operator">=</span> <span class="token string">''</span>
+					<span class="token punctuation">}</span>
+					<span class="token operator">++</span>k
+					<span class="token keyword">break</span>
+				<span class="token keyword">case</span> <span class="token string">'('</span><span class="token operator">:</span>
+					<span class="token comment">// 当遇到左括号时，递归处理子式</span>
+					<span class="token keyword">const</span> returns <span class="token operator">=</span> <span class="token function">runtime</span><span class="token punctuation">(</span>k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> field<span class="token punctuation">)</span>
+					<span class="token comment">// 如果操作为let</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span>op <span class="token operator">==</span> <span class="token string">'let'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						<span class="token comment">// 对作用域赋值进行处理</span>
+						process<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>returns<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+						<span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>length <span class="token operator">&gt;=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+							field<span class="token punctuation">[</span>process<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>process<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+							process<span class="token punctuation">.</span>length <span class="token operator">=</span> <span class="token number">0</span>
+						<span class="token punctuation">}</span>
+					<span class="token punctuation">}</span>
+					<span class="token comment">// 保存子式的结果</span>
+					vals<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>returns<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+					<span class="token comment">// 刷新当前处理的字符串的右边界</span>
+					k <span class="token operator">=</span> returns<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+					<span class="token keyword">break</span>
+				<span class="token keyword">case</span> <span class="token string">')'</span><span class="token operator">:</span>
+					<span class="token comment">// 当遇到右括号时计算子式的值</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span>syntax<span class="token punctuation">)</span> vals<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>syntax<span class="token punctuation">)</span>
+					<span class="token comment">// 转换参数列表里面的值</span>
+					vals <span class="token operator">=</span> vals<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">val</span> <span class="token operator">=&gt;</span> <span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token function">parseFloat</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">?</span> field<span class="token punctuation">[</span>val<span class="token punctuation">]</span> <span class="token operator">:</span> val<span class="token punctuation">)</span>
+					<span class="token comment">// 对不同的操作执行不同的方法</span>
+					<span class="token keyword">switch</span> <span class="token punctuation">(</span>op<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						<span class="token keyword">case</span> <span class="token string">'add'</span><span class="token operator">:</span>
+							<span class="token comment">// 相加</span>
+							<span class="token keyword">const</span> add <span class="token operator">=</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>vals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>vals<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+							<span class="token keyword">return</span> <span class="token punctuation">[</span>add<span class="token punctuation">,</span> k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>
+						<span class="token keyword">case</span> <span class="token string">'mult'</span><span class="token operator">:</span>
+							<span class="token comment">// 相乘</span>
+							<span class="token keyword">const</span> mult <span class="token operator">=</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>vals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>vals<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+							<span class="token keyword">return</span> <span class="token punctuation">[</span>mult<span class="token punctuation">,</span> k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>
+						<span class="token keyword">case</span> <span class="token string">'let'</span><span class="token operator">:</span>
+							<span class="token comment">// 当操作为let时直接返回最后一个参数的值</span>
+							<span class="token keyword">return</span> <span class="token punctuation">[</span>vals<span class="token punctuation">[</span>vals<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>
+					<span class="token punctuation">}</span>
+					<span class="token keyword">break</span>
+				<span class="token keyword">default</span><span class="token operator">:</span>
+					<span class="token comment">// 其余情况下，收集字符形成字符串</span>
+					syntax <span class="token operator">+=</span> expression<span class="token punctuation">[</span>k<span class="token operator">++</span><span class="token punctuation">]</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">return</span> vals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">return</span> <span class="token function">runtime</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> <span class="token function-variable function">evaluate</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">expression</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> <span class="token function-variable function">runtime</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">k<span class="token punctuation">,</span> field <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+		<span class="token keyword">let</span> syntax <span class="token operator">=</span> <span class="token string">''</span>
+		<span class="token keyword">let</span> vals <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+		<span class="token keyword">let</span> op <span class="token operator">=</span> <span class="token keyword">null</span>
+		<span class="token keyword">const</span> process <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+		<span class="token keyword">while</span> <span class="token punctuation">(</span>k <span class="token operator">&lt;</span> expression<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">switch</span> <span class="token punctuation">(</span>expression<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">case</span> <span class="token string">' '</span><span class="token operator">:</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span>syntax<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>op<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+							op <span class="token operator">=</span> syntax
+							<span class="token keyword">if</span> <span class="token punctuation">(</span>op <span class="token operator">==</span> <span class="token string">'let'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+								field <span class="token operator">=</span> <span class="token punctuation">{</span>
+									<span class="token operator">...</span>field
+								<span class="token punctuation">}</span>
+							<span class="token punctuation">}</span>
+						<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>op <span class="token operator">==</span> <span class="token string">'let'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+							process<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>syntax<span class="token punctuation">)</span>
+							<span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>length <span class="token operator">&gt;=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+								<span class="token keyword">const</span> v <span class="token operator">=</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>process<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+								<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isNaN</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+									field<span class="token punctuation">[</span>process<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> field<span class="token punctuation">[</span>process<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+								<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+									field<span class="token punctuation">[</span>process<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> v
+								<span class="token punctuation">}</span>
+								process<span class="token punctuation">.</span>length <span class="token operator">=</span> <span class="token number">0</span>
+							<span class="token punctuation">}</span>
+						<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+							vals<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>syntax<span class="token punctuation">)</span>
+						<span class="token punctuation">}</span>
+						syntax <span class="token operator">=</span> <span class="token string">''</span>
+					<span class="token punctuation">}</span>
+					<span class="token operator">++</span>k
+					<span class="token keyword">break</span>
+				<span class="token keyword">case</span> <span class="token string">'('</span><span class="token operator">:</span>
+					<span class="token keyword">const</span> returns <span class="token operator">=</span> <span class="token function">runtime</span><span class="token punctuation">(</span>k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> field<span class="token punctuation">)</span>
+					<span class="token comment">// 如果操作为let</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span>op <span class="token operator">==</span> <span class="token string">'let'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						process<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>returns<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+						<span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>length <span class="token operator">&gt;=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+							field<span class="token punctuation">[</span>process<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>process<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+							process<span class="token punctuation">.</span>length <span class="token operator">=</span> <span class="token number">0</span>
+						<span class="token punctuation">}</span>
+					<span class="token punctuation">}</span>
+					vals<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>returns<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+					k <span class="token operator">=</span> returns<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+					<span class="token keyword">break</span>
+				<span class="token keyword">case</span> <span class="token string">')'</span><span class="token operator">:</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span>syntax<span class="token punctuation">)</span> vals<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>syntax<span class="token punctuation">)</span>
+					vals <span class="token operator">=</span> vals<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">val</span> <span class="token operator">=&gt;</span> <span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token function">parseFloat</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">?</span> field<span class="token punctuation">[</span>val<span class="token punctuation">]</span> <span class="token operator">:</span> val<span class="token punctuation">)</span>
+					<span class="token keyword">switch</span> <span class="token punctuation">(</span>op<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						<span class="token keyword">case</span> <span class="token string">'add'</span><span class="token operator">:</span>
+							<span class="token keyword">const</span> add <span class="token operator">=</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>vals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>vals<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+							<span class="token keyword">return</span> <span class="token punctuation">[</span>add<span class="token punctuation">,</span> k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>
+						<span class="token keyword">case</span> <span class="token string">'mult'</span><span class="token operator">:</span>
+							<span class="token keyword">const</span> mult <span class="token operator">=</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>vals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>vals<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+							<span class="token keyword">return</span> <span class="token punctuation">[</span>mult<span class="token punctuation">,</span> k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>
+						<span class="token keyword">case</span> <span class="token string">'let'</span><span class="token operator">:</span>
+							<span class="token keyword">return</span> <span class="token punctuation">[</span>vals<span class="token punctuation">[</span>vals<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>
+					<span class="token punctuation">}</span>
+					<span class="token keyword">break</span>
+				<span class="token keyword">default</span><span class="token operator">:</span>
+					syntax <span class="token operator">+=</span> expression<span class="token punctuation">[</span>k<span class="token operator">++</span><span class="token punctuation">]</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">return</span> vals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> <span class="token function">runtime</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> <span class="token function-variable function">evaluate</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">expression</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// 语法树节点</span>
+	<span class="token keyword">function</span> <span class="token function">SyntaxNode</span><span class="token punctuation">(</span><span class="token parameter">type</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">const</span> <span class="token constant">STDNAME</span> <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^[a-zA-Z\$_][a-zA-Z\d_]*$</span><span class="token regex-delimiter">/</span></span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>type <span class="token operator">=</span> type
+		<span class="token keyword">this</span><span class="token punctuation">.</span>catholic <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">addNext</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token keyword">instanceof</span> <span class="token class-name">SyntaxNode</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">this</span><span class="token punctuation">.</span>catholic<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+			<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">STDNAME</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">const</span> name_node <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SyntaxNode</span><span class="token punctuation">(</span>Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+				name_node<span class="token punctuation">.</span>catholic<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+				<span class="token keyword">this</span><span class="token punctuation">.</span>catholic<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>name_node<span class="token punctuation">)</span>
+			<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+				<span class="token keyword">const</span> num_node <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SyntaxNode</span><span class="token punctuation">(</span>Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'number'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+				num_node<span class="token punctuation">.</span>catholic<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+				<span class="token keyword">this</span><span class="token punctuation">.</span>catholic<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>num_node<span class="token punctuation">)</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>type <span class="token operator">==</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'Dec'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>catholic<span class="token punctuation">.</span>length <span class="token operator">&gt;=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					<span class="token keyword">const</span> value <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>catholic<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+					<span class="token keyword">const</span> key <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>catholic<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span>key<span class="token punctuation">.</span>type <span class="token operator">==</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						<span class="token keyword">const</span> c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SyntaxNode</span><span class="token punctuation">(</span>Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'C'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+						c<span class="token punctuation">.</span><span class="token function">addNext</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+						c<span class="token punctuation">.</span><span class="token function">addNext</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+						<span class="token keyword">this</span><span class="token punctuation">.</span>catholic<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+					<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+						<span class="token keyword">this</span><span class="token punctuation">.</span>catholic<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+						<span class="token keyword">this</span><span class="token punctuation">.</span>catholic<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+					<span class="token punctuation">}</span>
+				<span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">process</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">field <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+			<span class="token keyword">const</span> vals <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>catholic
+			<span class="token keyword">switch</span> <span class="token punctuation">(</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">case</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'Add'</span><span class="token punctuation">)</span><span class="token operator">:</span>
+					<span class="token keyword">return</span> vals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">process</span><span class="token punctuation">(</span>field<span class="token punctuation">)</span> <span class="token operator">+</span> vals<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">process</span><span class="token punctuation">(</span>field<span class="token punctuation">)</span>
+				<span class="token keyword">case</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'Mult'</span><span class="token punctuation">)</span><span class="token operator">:</span>
+					<span class="token keyword">return</span> vals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">process</span><span class="token punctuation">(</span>field<span class="token punctuation">)</span> <span class="token operator">*</span> vals<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">process</span><span class="token punctuation">(</span>field<span class="token punctuation">)</span>
+				<span class="token keyword">case</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'Exp'</span><span class="token punctuation">)</span><span class="token operator">:</span>
+					<span class="token keyword">return</span> vals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">process</span><span class="token punctuation">(</span>field<span class="token punctuation">)</span>
+				<span class="token keyword">case</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'Dec'</span><span class="token punctuation">)</span><span class="token operator">:</span>
+					<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> e <span class="token keyword">of</span> vals<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						<span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>type <span class="token operator">==</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'C'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+							<span class="token keyword">const</span> p <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token function">process</span><span class="token punctuation">(</span>field<span class="token punctuation">)</span>
+							field <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">...</span>field<span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">{</span> <span class="token punctuation">[</span>p<span class="token punctuation">.</span>k<span class="token punctuation">]</span><span class="token operator">:</span> p<span class="token punctuation">.</span>v <span class="token punctuation">}</span><span class="token punctuation">}</span>
+						<span class="token punctuation">}</span>
+					<span class="token punctuation">}</span>
+					<span class="token keyword">return</span> vals<span class="token punctuation">[</span>vals<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token operator">...</span>field <span class="token punctuation">}</span><span class="token punctuation">)</span>
+				<span class="token keyword">case</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'C'</span><span class="token punctuation">)</span><span class="token operator">:</span>
+					<span class="token keyword">return</span> <span class="token punctuation">{</span> k<span class="token operator">:</span> vals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>catholic<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token operator">:</span> vals<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">process</span><span class="token punctuation">(</span>field<span class="token punctuation">)</span> <span class="token punctuation">}</span>
+				<span class="token keyword">case</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token operator">:</span>
+					<span class="token keyword">return</span> field<span class="token punctuation">[</span>vals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+				<span class="token keyword">case</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'number'</span><span class="token punctuation">)</span><span class="token operator">:</span>
+					<span class="token keyword">return</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>vals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">display</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">blanks <span class="token operator">=</span> <span class="token number">0</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+			console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span>blanks<span class="token punctuation">)</span> <span class="token operator">+</span> type<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+			<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> e <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>catholic<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">if</span> <span class="token punctuation">(</span>e <span class="token keyword">instanceof</span> <span class="token class-name">SyntaxNode</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					e<span class="token punctuation">.</span><span class="token function">display</span><span class="token punctuation">(</span>blanks <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">)</span>
+				<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+					console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span>blanks<span class="token punctuation">)</span> <span class="token operator">+</span> e<span class="token punctuation">)</span>
+				<span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token comment">// 构造语法树</span>
+	<span class="token keyword">function</span> <span class="token function">generateSyntaxTree</span><span class="token punctuation">(</span><span class="token parameter">exp<span class="token punctuation">,</span> k</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">let</span> syntax <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span> <span class="token keyword">let</span> node <span class="token operator">=</span> <span class="token keyword">null</span>
+		<span class="token keyword">while</span> <span class="token punctuation">(</span>k <span class="token operator">&lt;</span> exp<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">switch</span> <span class="token punctuation">(</span>exp<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">case</span> <span class="token string">'('</span><span class="token operator">:</span>
+					<span class="token keyword">const</span> returns <span class="token operator">=</span> <span class="token function">generateSyntaxTree</span><span class="token punctuation">(</span>exp<span class="token punctuation">,</span> k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						<span class="token keyword">const</span> cache <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SyntaxNode</span><span class="token punctuation">(</span>Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'Exp'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+						cache<span class="token punctuation">.</span><span class="token function">addNext</span><span class="token punctuation">(</span>returns<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+						node<span class="token punctuation">.</span><span class="token function">addNext</span><span class="token punctuation">(</span>cache<span class="token punctuation">)</span>
+						k <span class="token operator">=</span> returns<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span>
+					<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+						node <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SyntaxNode</span><span class="token punctuation">(</span>Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'Exp'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+						node<span class="token punctuation">.</span><span class="token function">addNext</span><span class="token punctuation">(</span>returns<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+						k <span class="token operator">=</span> returns<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+					<span class="token punctuation">}</span>
+					<span class="token keyword">break</span>
+				<span class="token keyword">case</span> <span class="token string">' '</span><span class="token operator">:</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>syntax<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						<span class="token operator">++</span>k
+						<span class="token keyword">break</span>
+					<span class="token punctuation">}</span>
+					<span class="token keyword">switch</span> <span class="token punctuation">(</span>syntax<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						<span class="token keyword">case</span> <span class="token string">'add'</span><span class="token operator">:</span>
+							node <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SyntaxNode</span><span class="token punctuation">(</span>Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'Add'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+							<span class="token keyword">break</span>
+						<span class="token keyword">case</span> <span class="token string">'mult'</span><span class="token operator">:</span>
+							node <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SyntaxNode</span><span class="token punctuation">(</span>Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'Mult'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+							<span class="token keyword">break</span>
+						<span class="token keyword">case</span> <span class="token string">'let'</span><span class="token operator">:</span>
+							node <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SyntaxNode</span><span class="token punctuation">(</span>Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'Dec'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+							<span class="token keyword">break</span>
+						<span class="token keyword">default</span><span class="token operator">:</span>
+							node<span class="token punctuation">.</span><span class="token function">addNext</span><span class="token punctuation">(</span>syntax<span class="token punctuation">)</span>
+							<span class="token keyword">break</span>
+					<span class="token punctuation">}</span>
+					syntax <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token operator">++</span>k
+					<span class="token keyword">break</span>
+				<span class="token keyword">case</span> <span class="token string">')'</span><span class="token operator">:</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span>syntax <span class="token operator">&amp;&amp;</span> node<span class="token punctuation">)</span> node<span class="token punctuation">.</span><span class="token function">addNext</span><span class="token punctuation">(</span>syntax<span class="token punctuation">)</span>
+					<span class="token keyword">return</span> <span class="token punctuation">[</span>node<span class="token punctuation">,</span> k<span class="token punctuation">]</span>
+				<span class="token keyword">default</span><span class="token operator">:</span>
+					syntax <span class="token operator">+=</span> exp<span class="token punctuation">[</span>k<span class="token operator">++</span><span class="token punctuation">]</span>
+					<span class="token keyword">break</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>node<span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'parsing fail.'</span><span class="token punctuation">)</span>
+		<span class="token keyword">return</span> <span class="token punctuation">[</span>node<span class="token punctuation">,</span> k<span class="token punctuation">]</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">const</span> root <span class="token operator">=</span> <span class="token function">generateSyntaxTree</span><span class="token punctuation">(</span>expression<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+	<span class="token comment">// root.display();</span>
+	<span class="token keyword">return</span> root<span class="token punctuation">.</span><span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><blockquote><p>自己写一遍遍历处理的</p></blockquote> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">myEvaluate</span><span class="token punctuation">(</span><span class="token parameter">expression</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// index 判断位置</span>
+	<span class="token comment">// field 给一个空作用域</span>
+	<span class="token keyword">const</span> <span class="token function-variable function">runtime</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">index<span class="token punctuation">,</span> field <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+		<span class="token comment">// 需要几个变量：vals 代表最终返回值，syntax 记录语法， op 代表执行操作</span>
+		<span class="token keyword">let</span> syntax <span class="token operator">=</span> <span class="token string">''</span>
+		<span class="token comment">// 初始值为空</span>
+		<span class="token keyword">let</span> op <span class="token operator">=</span> <span class="token keyword">null</span>
+		<span class="token keyword">let</span> vals <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+		<span class="token comment">// ❗ process 计算值</span>
+		<span class="token keyword">let</span> process <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+		<span class="token comment">// 循环遍历输入的表达式</span>
+		<span class="token keyword">while</span> <span class="token punctuation">(</span>index <span class="token operator">&lt;</span> expression<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token comment">// 判断当前的值</span>
+			<span class="token keyword">switch</span> <span class="token punctuation">(</span>expression<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token comment">// 为空的时候</span>
+				<span class="token keyword">case</span> <span class="token string">' '</span><span class="token operator">:</span>
+					<span class="token comment">// 如果有值就处理，没有就不管先</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span>syntax<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						<span class="token comment">// 如果操作为空，先给操作赋值，肯定是操作在前面的，不对，如果直接是x呢，应该限制了不能这么搞吧</span>
+						<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>op<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+							op <span class="token operator">=</span> syntax
+							<span class="token comment">// 此时给他置空</span>
+							syntax <span class="token operator">=</span> <span class="token string">''</span>
+							<span class="token comment">// 如果是let则需要特殊处理域</span>
+							<span class="token keyword">if</span> <span class="token punctuation">(</span>op <span class="token operator">==</span> <span class="token string">'let'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+								field <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">...</span>field <span class="token punctuation">}</span>
+							<span class="token punctuation">}</span>
+						<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>op <span class="token operator">==</span> <span class="token string">'let'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+							process<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>syntax<span class="token punctuation">)</span>
+							<span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>length <span class="token operator">&gt;=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+								<span class="token keyword">const</span> v <span class="token operator">=</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>process<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+								<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isNaN</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+									<span class="token comment">// ❗如果不是数字 则从作用域中获取 反正这边就是需要赋值</span>
+									field<span class="token punctuation">[</span>process<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> field<span class="token punctuation">[</span>process<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+								<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+									field<span class="token punctuation">[</span>process<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> v
+								<span class="token punctuation">}</span>
+								<span class="token comment">// 处理完赋值process里面这两个东西就结束了，需要清除掉</span>
+								<span class="token comment">// 数组设置length为0可以直接清楚数组</span>
+								process<span class="token punctuation">.</span>length <span class="token operator">=</span> <span class="token number">0</span>
+							<span class="token punctuation">}</span>
+						<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+							vals<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>syntax<span class="token punctuation">)</span>
+						<span class="token punctuation">}</span>
+						syntax <span class="token operator">=</span> <span class="token string">''</span>
+						<span class="token comment">// 处理完需要进入下一步循环</span>
+					<span class="token punctuation">}</span>
+					<span class="token comment">// ❗无论是否处理 index都需要加</span>
+					index<span class="token operator">++</span>
+					<span class="token keyword">break</span>
+				<span class="token comment">// 值为( 的时候</span>
+				<span class="token keyword">case</span> <span class="token string">'('</span><span class="token operator">:</span>
+					<span class="token comment">// ❗这边的field不需要再解构，直接传就行</span>
+					<span class="token keyword">const</span> returns <span class="token operator">=</span> <span class="token function">runtime</span><span class="token punctuation">(</span>index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> field<span class="token punctuation">)</span><span class="token comment">// = { ...field })</span>
+					<span class="token comment">// TODO 返回之后继续进行操作并返回值</span>
+					<span class="token comment">// 返回后的值应该是[value，index]的格式我们需要取</span>
+					console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">') return = '</span><span class="token punctuation">,</span>returns<span class="token punctuation">)</span>
+					<span class="token comment">// 计算出来后需要看当前的操作是什么，如果是let 需要特殊操作</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span>op <span class="token operator">==</span> <span class="token string">'let'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						<span class="token comment">// 继续处理外面的赋值，有可能是(let x (let y 2 z 1 (add y z)))?</span>
+						process<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>returns<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+						<span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>length <span class="token operator">&gt;=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+							<span class="token comment">// 直接处理作用域？</span>
+							field<span class="token punctuation">[</span>process<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>process<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+							process<span class="token punctuation">.</span>length <span class="token operator">=</span> <span class="token number">0</span>
+						<span class="token punctuation">}</span>
+					<span class="token punctuation">}</span>
+					<span class="token comment">// 还需要保存子式的结果</span>
+					vals<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>returns<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+					index <span class="token operator">=</span> returns<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+					<span class="token keyword">break</span>
+				<span class="token comment">// 值为 ）的时候</span>
+				<span class="token keyword">case</span> <span class="token string">')'</span><span class="token operator">:</span>
+					<span class="token comment">// 进来的时候如果syntax还有值，需要赋值一下,赋值给谁呢?</span>
+					<span class="token comment">// ❔为啥是vals，这个不是最终要处理的值吗 现在push会是个啥</span>
+					<span class="token comment">// ❕ 这边就是把要算的变量放进去，后面会取这个变量的值，然后进行计算</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span>syntax<span class="token punctuation">)</span> vals<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>syntax<span class="token punctuation">)</span>
+					<span class="token comment">// 将vals中的变量和类数字都转化为其值</span>
+					<span class="token comment">// ❗map不会修改原数组！ ❗必须有return</span>
+					<span class="token comment">// vals.map((value) =&gt; { value = isNaN(parseFloat(value)) ? field[value] : parseFloat(value) })</span>
+					vals <span class="token operator">=</span> vals<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token function">parseFloat</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">?</span> field<span class="token punctuation">[</span>value<span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+					console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">') map end vals = '</span><span class="token punctuation">,</span>vals<span class="token punctuation">)</span>
+					<span class="token comment">// 右括号的时候就需要把括号内的表达式计算完，此时要看op是执行什么操作</span>
+					<span class="token keyword">switch</span> <span class="token punctuation">(</span>op<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						<span class="token keyword">case</span> <span class="token string">'let'</span><span class="token operator">:</span>
+							<span class="token comment">// 直接返回最后一个值就行了</span>
+							<span class="token keyword">return</span> <span class="token punctuation">[</span>vals<span class="token punctuation">[</span>vals<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>
+						<span class="token keyword">case</span> <span class="token string">'add'</span><span class="token operator">:</span>
+							<span class="token keyword">const</span> add <span class="token operator">=</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>vals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>vals<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+							<span class="token keyword">return</span> <span class="token punctuation">[</span>add<span class="token punctuation">,</span> index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>
+						<span class="token keyword">case</span> <span class="token string">'mult'</span><span class="token operator">:</span>
+							<span class="token keyword">const</span> mult <span class="token operator">=</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>vals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>vals<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+							<span class="token keyword">return</span> <span class="token punctuation">[</span>mult<span class="token punctuation">,</span> index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>
+					<span class="token punctuation">}</span>
+					<span class="token keyword">break</span>
+				<span class="token keyword">default</span><span class="token operator">:</span>
+					<span class="token comment">// 这个时候说明是需要记录的语法或操作</span>
+					<span class="token comment">// ❗这个时候也需要处理index加一</span>
+					syntax <span class="token operator">+=</span> expression<span class="token punctuation">[</span>index<span class="token operator">++</span><span class="token punctuation">]</span>
+					<span class="token keyword">break</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+		<span class="token comment">// vals 的格式是 [value, index]这样的，我们要返回值</span>
+		<span class="token keyword">return</span> vals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+	<span class="token punctuation">}</span>
+	<span class="token comment">// 肯定要执行runtime方法</span>
+	<span class="token keyword">return</span> <span class="token function">runtime</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div></div></div> <div class="page-slot page-slot-bottom"><!-- 横向自适应 -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="6620245489"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script></div> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">5/15/2022, 2:52:03 PM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/vuepressBolg/pages/af91ce/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">华为机试——玩牌高手</div></a> <a href="/vuepressBolg/pages/ef2e86/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">华为机试——参数解析</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/vuepressBolg/pages/af91ce/" class="prev">华为机试——玩牌高手</a></span> <span class="next"><a href="/vuepressBolg/pages/ef2e86/">华为机试——参数解析</a>→
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/vuepressBolg/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/vuepressBolg/pages/e8a445/"><div>
+            三数之和
+            <!----></div></a> <span class="date">05-15</span></dt></dl><dl><dd>02</dd> <dt><a href="/vuepressBolg/pages/6408f9/"><div>
+            数据结构与算法之美—数组介绍
+            <!----></div></a> <span class="date">05-14</span></dt></dl><dl><dd>03</dd> <dt><a href="/vuepressBolg/pages/429bea/"><div>
+            Z字形变换
+            <!----></div></a> <span class="date">04-20</span></dt></dl> <dl><dd></dd> <dt><a href="/vuepressBolg/archives/" class="more">更多文章&gt;</a></dt></dl></div></div></main></div> <div class="footer"><!----> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2021-2022
+    <span></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <div class="custom-html-window custom-html-window-rb" style="display:;"><div class="custom-wrapper"><span class="close-but">×</span> <div><!-- 固定160*160px -->
+      <ins class="adsbygoogle"
+          style="display:inline-block;max-width:160px;max-height:160px"
+          data-ad-client="ca-pub-7828333725993554"
+          data-ad-slot="8377369658"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+      </div></div></div></div><div class="global-ui"><div></div></div></div>
+    <script src="/vuepressBolg/assets/js/app.92d159cb.js" defer></script><script src="/vuepressBolg/assets/js/2.c937a76a.js" defer></script><script src="/vuepressBolg/assets/js/3.ed4544f5.js" defer></script><script src="/vuepressBolg/assets/js/51.1989026c.js" defer></script>
+  </body>
+</html>
